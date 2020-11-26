@@ -1,10 +1,10 @@
 ---
-title: "Next Steps"
+title: "Conclusion"
 chapter: true
-weight: 15
+weight: 12
 ---
 
-# Module 6 - next steps
+# Next Steps
 
 I hope you have enjoyed these exercises and got a feel of how easy it can be to debug serverless applications with Lumigo.
 

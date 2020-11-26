@@ -4,10 +4,6 @@ chapter: true
 weight: 13
 ---
 
-# Module 4 - debugging performance issues
-
-In this module, we'll see how you can identify slow dependencies and debug slow Lambda invocations.
-
 1. Go to the [Dashboard page](https://platform.lumigo.io/dashboard), and have a look at the `Service Latency` widget at the bottom right. This shows you the tail latency for serivces that you are calling from your Lambda functions.
 
 ![service latency](/images/mod04-lumigo-service-latency.png)

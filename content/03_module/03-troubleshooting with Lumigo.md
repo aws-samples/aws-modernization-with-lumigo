@@ -4,14 +4,6 @@ chapter: true
 weight: 12
 ---
 
-# Module 3 - troubleshooting with Lumigo
-
-In this module, we'll use Lumigo to troubleshoot the issues in the demo app.
-
-If you go to the [Issues & Alerts](https://platform.lumigo.io/issues) page and you will see at a glance all the issues that Lumigo has identified in your environment.
-
-![Lumigo issues](/images/mod03-lumigo-issues-and-alerts.png)
-
 ## Troubleshoot timeouts (requestUnicorn)
 
 1. If you click on the `Timeout` issue for the `requestUnicorn` function, it will take you to the function details page for the function and show you the invocations that timed out.

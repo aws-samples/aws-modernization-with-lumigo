@@ -4,10 +4,6 @@ chapter: true
 weight: 14
 ---
 
-# Module 5 - alerting
-
-In this module, we'll set up alerts in Lumigo.
-
 1. Go to the [Alerts](https://platform.lumigo.io/alerts-configurations) page, you can see that Lumigo has configured a couple of default alerts.
 
 ![Default Alerts](/images/mod05-lumigo-default-alerts.png)
@@ -34,9 +30,9 @@ Finally, choose how we want to be notified. If you follow the `here` link below.
 
 ![Alert Channel](/images/mod05-lumigo-new-alert-here.png)
 
-you will arrive at the [Integrations](https://platform.lumigo.io/integrations) page where you can integrate with other vendor software you might be using already.
+You will arrive at the [Integrations](https://platform.lumigo.io/integrations) page where you can integrate with other vendor software you might be using already.
 
-![Alert Channel](images/mod05-lumigo-integrations.png)
+![Alert Channel](/images/mod05-lumigo-integrations.png)
 
 Finally, click `Add Alert` to finish the process.
 

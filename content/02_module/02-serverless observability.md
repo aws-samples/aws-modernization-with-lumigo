@@ -4,10 +4,6 @@ chapter: true
 weight: 11
 ---
 
-# Module 2 - serverless observability
-
-In this module, you will integrate [Lumigo](https://lumigo.io) with the demo application.
-
 ## Integrate Lumigo into the app
 
 To get started with Lumigo, take the following steps. A more detailed guide can be found at [the Lumigo documentation](https://docs.lumigo.io/docs/create-an-account).
