@@ -2,7 +2,11 @@ baseURL = "/"
 languageCode = "en-US"
 defaultContentLanguage = "en"
 
+ main
 title = "Troubleshooting AWS Serverless Applications with Lumigo"
+=======
+title = "Modern Infrastructure as Code with Lumigo"
+main
 theme = "hugo-theme-learn"
 metaDataFormat = "yaml"
 defaultContentLanguageInSubdir= "true"
@@ -15,9 +19,15 @@ enableEmoji = true
   # See the config.toml file from this documentation site to have an example.
   #editURL = ""
   # Author of the site, will be used in meta information
+main
   author = "Sarah Fallah-Adl"
   # Description of the site, will be used in meta information
   description = "Troubleshooting AWS Serverless Applications with Lumigo"
+=======
+  author = "Pulumi Inc."
+  # Description of the site, will be used in meta information
+  description = "Modern Infrastructure as Code"
+main
   # Shows a checkmark for visited pages on the menu
   showVisitedLinks = true
   # Disable search function. It will hide search bar
@@ -59,6 +69,7 @@ name = "<i class='far fa-lightbulb'></i> Modernization with AWS"
 url = "https://aws.amazon.com/blogs/modernizing-with-aws/"
 weight = 20
 
+ main
 [[menu.shortcuts]]
 name = "<i class='fas fa-chalkboard-teacher'></i> EKS Workshop"
 url = "https://eksworkshop.com/"
@@ -78,3 +89,9 @@ weight = 23
   defaultMarkdownHandler = "blackfriday"
   [markup.blackFriday]
     hrefTargetBlank = true
+=======
+[markup]
+  defaultMarkdownHandler = "blackfriday"
+  [markup.blackFriday]
+    hrefTargetBlank = true
+ main
