@@ -1,5 +1,5 @@
 ---
-title: "Conclusion"
+title: "Next Steps"
 chapter: true
 weight: 12
 ---
@@ -7,8 +7,6 @@ weight: 12
 # Next Steps
 
 I hope you have enjoyed these exercises and got a feel of how easy it can be to debug serverless applications with Lumigo.
-
-For a chance to win a XBox Series X and to try out Lumigo for real, please raise your hand and join one of our breakout rooms for a 1-2-1 session to help you integrate Lumigo with your production accounts to see what insights Lumigo can give you.
 
 There is a generous [free tier](https://lumigo.io/pricing) where you can trace up to 150,000 Lambda invocations a month for free.
 

@@ -1,47 +1,16 @@
----
-title: "Troubleshooting with Lumigo"
-chapter: true
-weight: 12
----
++++
+title = "3.3 Troubleshoot business logic errors"
+chapter = true
+weight = 30
++++
 
-## Troubleshoot timeouts (requestUnicorn)
+## Troubleshoot business logic errors
 
-1. If you click on the `Timeout` issue for the `requestUnicorn` function, it will take you to the function details page for the function and show you the invocations that timed out.
+Lumigo is not just great at monitoring your production application and alerting you to problems. Turns out our customers also love using it for debugging business logic errors during development because they can easily peek into the internal state of their application - every invocation event, event environment variable that was used, and the request and response for every HTTP/TCP requests their functions make to other services!
 
-![requestUnicorn timeouts](/images/mod03-lumigo-requestUnicorn-timeouts.png)
+Let's see how we can use these information to help us debug a problem in our business logic.
 
-2. Click on one of the timed out transactions to see what happened in that transaction.
-
-![requestUnicorn timed out](/images/mod03-lumigo-requestUnicorn-timeout-transaction.png)
-
-3. From the function logs, you can see a message like `2020-10-20T11:40:37.402Z	3ea3b770-2986-4926-a0b3-2c6a045bfa20	INFO	Finding unicorn for  42.34963749150315 ,  -71.05718295574066`
-
-and then 6 seconds later, the invocation timed out.
-
-![requestUnicorn timed out](/images/mod03-lumigo-requestUnicorn-timeout-transaction-log.png)
-
-4. Click on the `Timeline` tab and you will see that the request to `4fsay0n12a.execute-api.us-east-1.amazonaws.com` never completed, hence the `N/A`. So this was the cause for the invocation timing out.
-
-![requestUnicorn timed out](/images/mod03-lumigo-requestUnicorn-timeout-transaction-timeline.png)
-
-
-## Troubleshoot timeouts (calcSalaries)
-
-1. Go to back the [Issues & Alerts](https://platform.lumigo.io/issues) page and you'll see that the `calcSalaries` function has also timed out a few times. As before, click on the `Timeout` issue for `calcSalaries` and see the timed out invocations.
-
-![calcSalaries timeouts](/images/mod03-lumigo-calcSalaries-timeouts.png)
-
-2. Click on one of the timed out transactions to see what happened.
-
-![calcSalaries timed out](/images/mod03-lumigo-calcSalaries-timeout-transaction.png)
-
-3. Unfortunately, there's nothing in the logs to indicate what happened. But let's click on `Timeline` tab to see what happened.
-
-![requestUnicorn timed out](/images/mod03-lumigo-requestUnicorn-timeout-transaction-timeline.png)
-
-## Troubleshoot business logic errors (uploadReceipt)
-
-1. Go to back the [Issues & Alerts](https://platform.lumigo.io/issues) page and you'll see that the `uploadReceipt` function has thrown a few `TypeError`. 
+1. Go to back the [Issues & Alerts](https://platform.lumigo.io/issues) page and you'll see that the `uploadReceipt` function has thrown a few `TypeError`.
 
 ![uploadReceipt errors](/images/mod03-lumigo-uploadReceipt.png)
 

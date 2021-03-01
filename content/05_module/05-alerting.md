@@ -1,8 +1,10 @@
----
-title: "Alerting"
-chapter: true
-weight: 14
----
++++
+title = "5.1 Setting up alerts"
+chapter = true
+weight = 10
++++
+
+## Setting up alerts
 
 1. Go to the [Alerts](https://platform.lumigo.io/alerts-configurations) page, you can see that Lumigo has configured a couple of default alerts.
 
