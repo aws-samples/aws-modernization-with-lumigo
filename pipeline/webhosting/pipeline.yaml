@@ -11,11 +11,11 @@ Parameters:
   ProjectName:
     Type: String
     Description: Project Name
-    Default: xxxxxxx
+    Default: lumigo
   WebsiteBucket:
     Type: String
     Description: Website S3 bucket name
-    Default: xxxxxxx.awsworkshop.io 
+    Default: lumigo.awsworkshop.io 
   CloudFrontDistroId:
     Type: String
     Description: CloudFront distribution ID 
