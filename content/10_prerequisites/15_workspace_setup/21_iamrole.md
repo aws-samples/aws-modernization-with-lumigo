@@ -12,3 +12,7 @@ Starting from here, when you see command to be entered such as below, you will e
 2. Confirm that **AWS service** and **EC2** are selected, then click **Next: Permissions** to view permissions.
 3. Confirm that **AdministratorAccess** is checked, then click **Next: Tags**, then **Next: Review** to review.
 4. Enter `Lumigo-Workshop-Admin` for the Role name, and select **Create role**
+
+{{% notice info %}}
+When you create IAM policies in your production account, follow the standard security advice of granting least privilege, or granting only the permissions required to perform a task. Determine what users (and roles) need to do and then craft policies that allow them to perform only those tasks.
+{{% /notice %}}
