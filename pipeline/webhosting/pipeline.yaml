@@ -19,15 +19,15 @@ Parameters:
   CloudFrontDistroId:
     Type: String
     Description: CloudFront distribution ID 
-    Default: yyyyyyy
+    Default: E1IO8MKJBKTD43
   GitHubRepo:
     Type: String
     Description: repo name
-    Default: aws-modernization-xxxxxxx
+    Default: aws-modernization-with-lumigo
   FullRepoURL:
     Type: String
     Description: The full url to the repo
-    Default: https://github.com/aws-samples/aws-modernization-xxxxxxxx.git  
+    Default: https://github.com/aws-samples/aws-modernization-with-lumigo.git  
   GitHubOwner:
     Type: String
     Description: GitHub owner name
