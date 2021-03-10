@@ -14,11 +14,11 @@ To get started with Lumigo, take the following steps. A more detailed guide can 
 
 ![Lumigo about you](/images/mod02-lumigo-about-you.png)
 
-3. Next, we will link Lumigo to our AWS account. To do so all that is required is to deploy its CloudFormation stack to your account. A more detailed walkthrough of this step can be found [here](https://docs.lumigo.io/docs/connect-your-environment)
+* Next, we will link Lumigo to our AWS account. To do so all that is required is to deploy its CloudFormation stack to your account. A more detailed walkthrough of this step can be found [here](https://docs.lumigo.io/docs/connect-your-environment)
 
 ![Lumigo connect AWS](/images/mod02-lumigo-connect-aws.png)
 
-4. You should land at the instrumentation step, which will let us choose functions to trace:
+* You should land at the instrumentation step, which will let us choose functions to trace:
 
 ![Lumigo auto instrumentation](/images/mod02-lumigo-auto-instrumentation.png)
 
@@ -28,4 +28,4 @@ You can also do this after the initial setup too. Just head over to the [Functio
 
 Once you added tracing to the relevant Lambda functions, Lumigo will automatically start monitoring your application.
 
-5. Order some unicorn rides, and let's see what's going on in Lumigo!
+* Order some unicorn rides, and let's see what's going on in Lumigo!

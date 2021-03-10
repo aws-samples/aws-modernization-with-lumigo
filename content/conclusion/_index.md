@@ -1,7 +1,7 @@
 ---
 title: "Next Steps"
 chapter: true
-weight: 12
+weight: 80
 ---
 
 # Next Steps

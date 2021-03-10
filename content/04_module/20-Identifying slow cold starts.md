@@ -16,7 +16,7 @@ When you have lots of functions, it's not feasible to go through each functions 
 
 ![functions with most coldstarts](/images/mod04-lumigo-dashboard-cold-starts.png)
 
-User-facing functions, such as those behind API Gateway, are often latency sensitive. In some cases, you may wish to use [Provisioned Concurrency](/https://lumigo.io/blog/provisioned-concurrency-the-end-of-cold-starts/) to eliminate cold starts altogether. For instance, when you have really strict latency requirements, or if you're using JVM/.Net Core runtimes and cannot optimize your code any further to keep cold start duration under an acceptable latency range.
+User-facing functions, such as those behind API Gateway, are often latency sensitive. In some cases, you may wish to use [Provisioned Concurrency](https://lumigo.io/blog/provisioned-concurrency-the-end-of-cold-starts/) to eliminate cold starts altogether. For instance, when you have really strict latency requirements, or if you're using JVM/.Net Core runtimes and cannot optimize your code any further to keep cold start duration under an acceptable latency range.
 
 In some really unfortunate cases, cold starts can also stack up when one API function calls another (via API Gateway) and can cause further delays. You can easily spot these cases in the [Transactions page](https://platform.lumigo.io/transactions), by looking at the `Cold Starts` column.
 

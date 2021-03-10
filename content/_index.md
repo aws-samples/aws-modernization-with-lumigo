@@ -12,6 +12,7 @@ Lumigo is a troubleshooting platform for serverless applications. With one-click
 
 In this workshop you will learn how easy it can be to debug serverless applications with Lumigo.
 
+
 ### Learning Objectives
 
 - Create and deploy a demo appolication.
@@ -19,6 +20,9 @@ In this workshop you will learn how easy it can be to debug serverless applicati
 - Use Lumigo to troubleshoot timeouts and business logic.
 - Identify slow dependencies and debug slow Lambda invocations.
 - Setting up alerts in lumigo.
+
+### Expected Duration
+- 2 Hours
 
 ### Who should take this workshop?
 
