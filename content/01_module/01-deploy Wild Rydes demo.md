@@ -16,7 +16,7 @@ As a first step, we'll deploy the demo app to your AWS account and then see how 
 
 * In the project folder, run `npm ci` to restore all project dependencies.
 
-* Open `serverless.yml`, and on line 10, replace `<INSERT YOUR NAME>` with your name.
+* Open `serverless.yml`, and on line 10, replace `<INSERT YOUR NAME>` with your name (without spaces or uppercase letters).
 
 * In the project folder, run `npm run deploy-all`. This will deploy both the Serverless backend as well as the Wild Rydes frontend application.
 
