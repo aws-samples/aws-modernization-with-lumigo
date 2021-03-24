@@ -14,7 +14,7 @@ weight = 10
 
 ![slow dependency](/images/mod04-lumigo-slow-dependency.png)
 
-* Click on the p99 latency value (4337 in my case)
+* Click on the p99 latency value (454 in my case)
 
 ![click on the p99 value](/images/mod04-lumigo-p99.png)
 
@@ -32,7 +32,7 @@ In this transaction, you can see that we made 3 calls to `4fsay0n12a.execute-api
 
 ![transaction timeline](/images/mod04-lumigo-slow-transaction-timeline.png)
 
-* Click on the slow HTTP request, and see that the response was for `Rocinante`.
+* Click on the slow HTTP request, and see that the response was for `Bucephalus`.
 
 ![slow request](/images/mod04-lumigo-slow-request.png)
 

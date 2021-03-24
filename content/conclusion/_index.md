@@ -14,7 +14,7 @@ There is a generous [free tier](https://lumigo.io/pricing) where you can trace u
 
 Which means you can pretty much trace your dev accounts for free, and maybe even your production accounts, until you have sufficient amount of traffic.
 
-And if you apply the code `Lumigo500`, under `Settings` -> `Account` -> `I have a special code`, then you can bump that free up to 500,000 traced invocations per month!
+And if you apply the code `Lumigo500`, under `Settings` -> `Plan` -> `I have a special code`, then you can bump that free up to 500,000 traced invocations per month!
 
 ![lumigo account](/images/mod06-lumigo-account-settings.png)
 
