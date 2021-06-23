@@ -4,9 +4,9 @@ chapter: false
 weight: 20
 ---
 
-1 . Within the AWS console, use the region drop list to select **us-east-1 (N. Virginia)**.  This will ensure the workshop script provisions the resources in this same region..
+1 . Within the AWS console, use the region drop list to select **us-east-1 (N. Virginia)**.  This will ensure the workshop script provisions the resources in this same region
 
-2 . Navigate to the [cloud9 console](https://console.aws.amazon.com/cloud9/home) or just search for it under the **AWS console services** menu.
+2 . Navigate to the [cloud9 console](https://console.aws.amazon.com/cloud9/home) or just search for it under the **AWS console services** menu
 
 3 . Click the **Create environment** button
 
@@ -31,7 +31,7 @@ When the environment comes up, customize the environment by:
 
 3 . Open a new **terminal** tab in the main work area.
 
-4 . Hide the left hand environment explorer by clicking on the left side **environment** tab.
+4 . Hide the left-hand environment explorer by clicking on the left side **environment** tab.
 
 
 {{% notice tip %}}
@@ -39,5 +39,5 @@ If you don't like this dark theme, you can change it from the **View / Themes** 
 {{% /notice %}}
 
 {{% notice tip %}}
-Cloud9 requires third-party-cookies. You can whitelist the [specific domains]( https://docs.aws.amazon.com/cloud9/latest/user-guide/troubleshooting.html#troubleshooting-env-loading).  You are having issues with this, Ad blockers, javascript disablers, and tracking blockers should be disabled for the cloud9 domain, or connecting to the workspace might be impacted.
+Cloud9 requires third-party-cookies. You can whitelist the [specific domains]( https://docs.aws.amazon.com/cloud9/latest/user-guide/troubleshooting.html#troubleshooting-env-loading). Ad blockers, javascript disablers, and tracking blockers should be disabled for the cloud9 domain, or connecting to the workspace might be impacted.
 {{% /notice %}}

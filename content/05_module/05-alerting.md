@@ -6,15 +6,15 @@ weight = 10
 
 ## Setting up alerts
 
-* Go to the [Alerts](https://platform.lumigo.io/alerts-configurations) page, you can see that Lumigo has configured a couple of default alerts.
+* Go to the [Alerts](https://platform.lumigo.io/config/issues) page, you can see that Lumigo has configured a couple of default alerts.
 
-![Default Alerts](/images/mod05-lumigo-default-alerts.png)
+![Default Alerts](/images/mod05-lumigo-default-alerts-new.png)
 
 By enabling `auto-trace` on our functions, they have been configured with these default alerts.
 
 ![Default Alert Functions](/images/mod05-lumigo-default-alert-functions.png)
 
-By default, they're configured to send you at most one alert per hour. You can dial this up or down (up to as frequent as to alert you on `Every Event`).
+By default, they're configured to send you at most one alert per an hour. You can dial this up or down (up to as frequent as to alert you on `Every Event`).
 
 * Click on each of the alerts and change the `Alert Frequency` in the dialogue to `Every Event`. Don't forget to click `Save Alert` when you're done.
 

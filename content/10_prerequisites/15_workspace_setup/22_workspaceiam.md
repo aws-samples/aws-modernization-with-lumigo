@@ -8,5 +8,5 @@ weight: 22
 
 2. Select the instance, then choose **Actions / Security / Modify IAM role**
 
-3. Choose **Lumigo-Workshop-Admin** from the **IAM Role** drop down, and select **Save**
+3. Choose **Lumigo-Workshop-Admin** from the **IAM Role**, and select **Save**
 

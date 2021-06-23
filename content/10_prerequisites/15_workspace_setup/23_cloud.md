@@ -4,22 +4,18 @@ chapter: false
 weight: 23
 ---
 
-{{% notice info %}}
-Cloud9 normally manages IAM credentials dynamically. This isn't currently compatible with
-the EKS IAM authentication, so we will disable it and rely on the IAM role instead.
-{{% /notice %}}
-
   1. Return to your workspace and click the gear icon (in top right corner), or click to open a new tab and choose "Open Preferences"
 
   2. Select **AWS SETTINGS** and turn off **AWS managed temporary credentials**
+     ![Cloud9 AWS Settings](/images/10_prerequisites/cloud9-aws-settings.png)
 
   3. Close the Preferences tab
-
-  4. Copy and run (paste with **Ctrl+P**) the commands below.
-
-     Before running it, review what it does by reading through the comments.
-
-
+     
+  4. Copy and run (paste with **Ctrl+P**) the commands below into the terminal window. Click **Enter** to execute last command. You should see *"IAM role valid"* message if everything ran correctly.
+{{% notice tip %}} 
+Before running it, you can review what it does by reading through the comments. 
+{{% /notice %}}
+     
 ```sh
 # Update awscli
 sudo pip install --upgrade awscli && hash -r
@@ -79,3 +75,22 @@ Actions executed:
 :small_blue_diamond: Copy two scripts into place for use later in the workshop.
 
 -->
+
+### Setup access to GitHub in Cloud9 environment
+
+1. Generate SSH key pair and display the public key to be copied to GitHub. Leave the default file name by pressing enter when asked for a file to save the key, and enter the passphrase on your choice (twice to confirm). You will see the key starting from "ssh-rsa"
+   ```sh
+   ssh-keygen -t rsa && \
+   cat /home/ec2-user/.ssh/id_rsa.pub
+   ```
+1. Go to your GitHub account [keys](https://github.com/settings/keys), click "New SSH key", add a title (for example `Lumigo Workshop Cloud9 Environment`), insert public key into "Key" section and click "Add SSH key"
+
+1. Check SSH agent is running, and add private SSH key to the registry. Enter your passphrase when asked
+   ```sh
+   eval $(ssh-agent -s) && \
+   ssh-add /home/ec2-user/.ssh/id_rsa
+   ```
+
+{{% notice tip %}}
+Use command **clear** in the terminal to clean it from previous outputs.
+{{% /notice %}}

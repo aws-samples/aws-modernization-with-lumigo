@@ -8,17 +8,20 @@ weight: 10
 
 As a first step, we'll deploy the demo app to your AWS account and then see how we can debug different problems with Lumigo.
 
+{{% notice info %}}
 **RECOMMENDATION**: you shouldn't deploy this to your production AWS account. Use your personal account, or a playground account.
+{{% /notice %}}
 
 * First, clone this repo locally:
+```
+git clone git@github.com:lumigo-io/troubleshooting-serverless-workshop-demo
+```
 
-`https://github.com/lumigo-io/troubleshooting-serverless-workshop-demo`
-
-* In the project folder, run `npm ci` to restore all project dependencies.
+* Go to the project folder `cd troubleshooting-serverless-workshop-demo/` and run `npm ci` to restore all project dependencies.
 
 * Open `serverless.yml`, and on line 10, replace `<INSERT YOUR NAME>` with your name (without spaces or uppercase letters).
 
-* In the project folder, run `npm run deploy-all`. This will deploy both the Serverless backend as well as the Wild Rydes frontend application.
+* In the project folder, run `npm run deploy-all`. This will deploy both the Serverless backend and the Wild Rydes frontend application.
 
 The deployment process will take a couple of minutes, so let's talk about what's going on here.
 

@@ -8,7 +8,7 @@ weight = 10
 
 Let's see how we can use Lumigo to troubleshoot timeouts for synchronous Lambda functions such as those handling API requests.
 
-* If you click on the `Timeout` issue for the `requestUnicorn` function, it will take you to the function details page for the function and show you the invocations that timed out.
+* If you click on the timed out issue for the `requestUnicorn` function, it will take you to the function details page for the function and show you the invocations that timed out.
 
 ![requestUnicorn timeouts](/images/mod03-lumigo-requestUnicorn-timeouts.png)
 

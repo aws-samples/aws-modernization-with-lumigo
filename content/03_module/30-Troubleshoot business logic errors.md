@@ -8,9 +8,9 @@ weight = 30
 
 Lumigo is not just great at monitoring your production application and alerting you to problems. Turns out our customers also love using it for debugging business logic errors during development because they can easily peek into the internal state of their application - every invocation event, event environment variable that was used, and the request and response for every HTTP/TCP requests their functions make to other services!
 
-Let's see how we can use these information to help us debug a problem in our business logic.
+Let's see how we can use this information to help us debug a problem in our business logic.
 
-* Go to back the [Issues & Alerts](https://platform.lumigo.io/issues) page and you'll see that the `uploadReceipt` function has thrown a few `TypeError`.
+* Go to back the [Issues](https://platform.lumigo.io/issues) page and you'll see that the `uploadReceipt` function has thrown a few `TypeError`.
 
 ![uploadReceipt errors](/images/mod03-lumigo-uploadReceipt.png)
 
@@ -32,7 +32,11 @@ Well, we see the error `Cannot read property 'Name' of undefined` and probably h
 
 To find evidence to support our hypothesis, let's look for a successful invocation and compare that with this.
 
-* Click `Show Similar Transactions` on the top right.
+* Click **Show Similar Transactions** on the top right.
+
+{{% notice note %}}
+If you don't see full graph and **Show Similar Transactions** button you need to click **See Full Transaction** button on the left top corner of the graph window.
+{{% /notice %}}
 
 ![show similar transactions](/images/mod03-lumigo-show-similar-transactions.png)
 

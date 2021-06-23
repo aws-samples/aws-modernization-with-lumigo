@@ -14,7 +14,7 @@ There is a generous [free tier](https://lumigo.io/pricing) where you can trace u
 
 Which means you can pretty much trace your dev accounts for free, and maybe even your production accounts, until you have sufficient amount of traffic.
 
-And if you apply the code `Lumigo500`, under `Settings` -> `Plan` -> `I have a special code`, then you can bump that free up to 500,000 traced invocations per month!
+And if you apply the code `Lumigo500`, under `Settings` -> `Plan` -> `I have a special code`, then you can bump that free up to 500,000 traced invocations per a month!
 
 ![lumigo account](/images/mod06-lumigo-account-settings.png)
 
@@ -22,7 +22,7 @@ And if you apply the code `Lumigo500`, under `Settings` -> `Plan` -> `I have a s
 
 ## What if I have more than 1 AWS account?
 
-No problems. You can manage multiple accounts (we call them `projects`) with your Lumigo user, and you can quickly switch between different projects with the `Project` drop-down at the top right corner of the screen.
+No problems. You can manage multiple accounts (we call them `projects`) with your Lumigo user, and you can quickly switch between different projects with the `Project` drop-down in the top right corner of the screen.
 
 ![projects](/images/mod06-lumigo-projects.png)
 

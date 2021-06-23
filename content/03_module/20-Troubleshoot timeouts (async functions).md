@@ -10,7 +10,7 @@ Asynchronous Lambda functions (such as those handling background tasks via SNS t
 
 So let's take a moment to see how we can troubleshoot timeouts for these asynchronous Lambda functions.
 
-* Go to back the [Issues & Alerts](https://platform.lumigo.io/issues) page and you'll see that the `calcSalaries` function has also timed out a few times. As before, click on the `Timeout` issue for `calcSalaries` and see the timed out invocations.
+* Go to back the [Issues](https://platform.lumigo.io/issues) page and you'll see that the `calcSalaries` function has also timed out a few times. As before, click on the timed out issue for `calcSalaries` and see the timed out invocations.
 
 ![calcSalaries timeouts](/images/mod03-lumigo-calcSalaries-timeouts.png)
 

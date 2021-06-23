@@ -12,7 +12,7 @@ If you go to the [Functions page](https://platform.lumigo.io/functions) and navi
 
 ![cold start metrics](/images/mod04-lumigo-cold-start-metrics.png)
 
-When you have lots of functions, it's not feasible to go through each functions individually. In the [Dashboard](https://platform.lumigo.io/dashboard) you can use the `Functions with most Cold Starts` widget to quickly identify problematic functions.
+When you have lots of functions, it's not feasible to go through each function individually. In the [Dashboard](https://platform.lumigo.io/dashboard) you can use the `Functions with most Cold Starts` widget to quickly identify problematic functions.
 
 ![functions with most coldstarts](/images/mod04-lumigo-dashboard-cold-starts.png)
 
@@ -24,6 +24,6 @@ In some really unfortunate cases, cold starts can also stack up when one API fun
 
 If this happens frequently, then it might also be a good reason to use Provisioned Concurrency. Maybe one cold start of a few hundred milliseconds is acceptable, but when a few of them stack up on a single transaction, that can result in noticeable delays to users.
 
-Finally, you can alos use the [lumigo-cli](https://www.npmjs.com/package/lumigo-cli), our open source CLI tool, and run the [analyze-lambda-cold-starts command](https://www.npmjs.com/package/lumigo-cli#lumigo-cli-analyze-lambda-cold-starts) to analyze the cold start performance for all your functions in an AWS account.
+Finally, you can also use the [lumigo-cli](https://www.npmjs.com/package/lumigo-cli), our open source CLI tool, and run the [analyze-lambda-cold-starts command](https://www.npmjs.com/package/lumigo-cli#lumigo-cli-analyze-lambda-cold-starts) to analyze the cold start performance for all your functions in an AWS account.
 
 ![analyze-lambda-cold-starts](/images/mod04-lumigo-cli-analyze-cold-starts.png)
