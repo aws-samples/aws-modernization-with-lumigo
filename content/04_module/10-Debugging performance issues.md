@@ -6,7 +6,7 @@ weight = 10
 
 ## Debugging performance issues
 
-* Go to the [***Dashboard***](https://platform.lumigo.io/dashboard) page, and have a look at the `Service Latency` widget at the bottom right. This shows you the tail latency for services that you are calling from your Lambda functions.
+* Go to the [Dashboard](https://platform.lumigo.io/dashboard) page, and have a look at the `Service Latency` widget at the bottom right. This shows you the tail latency for services that you are calling from your Lambda functions.
 
 ![service latency](/images/mod04-lumigo-service-latency.png)
 
@@ -18,7 +18,7 @@ weight = 10
 
 ![click on the p99 value](/images/mod04-lumigo-p99.png)
 
-This takes you to the ***Explore*** page with a prefilled query that finds the transactions where this service was involved and recorded a latency that's equal to or greater than the latency value you clicked on.
+This takes you to the [Explore](https://platform.lumigo.io/explore) page with a prefilled query that finds the transactions where this service was involved and recorded a latency that's equal to or greater than the latency value you clicked on.
 
 ![find slow transactions](/images/mod04-lumigo-p99-transaction.png)
 
@@ -36,4 +36,4 @@ In this transaction, you can see that we made 3 calls to `4fsay0n12a.execute-api
 
 ![slow request](/images/mod04-lumigo-slow-request.png)
 
-* Go back to the ***Explore*** page and find other transactions where `4fsay0n12a.execute-api.us-east-1.amazonaws.com` had been slow. See if you can spot any commonalities to these slow requests.
+* Go back to the [Explore](https://platform.lumigo.io/explore) page and find other transactions where `4fsay0n12a.execute-api.us-east-1.amazonaws.com` had been slow. See if you can spot any commonalities to these slow requests.
