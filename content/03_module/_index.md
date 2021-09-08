@@ -1,7 +1,7 @@
 +++
-title = "Module 3"
+title = "Module 3: Troubleshooting"
 chapter = true
-weight = 30
+weight = 130
 +++
 
 # Module 3: Troubleshooting with Lumigo

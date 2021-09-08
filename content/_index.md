@@ -5,6 +5,7 @@ weight: 1
 ---
 
 # Troubleshooting AWS Serverless Applications with Lumigo
+[![Lumigo](images/lumigo.png)](https://lumigo.io/)
 
 ### Welcome
 

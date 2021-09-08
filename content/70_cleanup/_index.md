@@ -1,10 +1,13 @@
 +++
 title = "Cleanup"
 chapter = true
-weight = 70
+weight = 170
 +++
 
 ## Cleanup
+{{% notice note %}}
+If you are attending AWS Event and using one of provided AWS accounts than you can skip this section.
+{{% /notice %}}
 
 1. Delete `Lumigo-Workshop-Admin` IAM role
 

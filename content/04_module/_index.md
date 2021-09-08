@@ -1,7 +1,7 @@
 +++
-title = "Module 4"
+title = "Module 4: Debugging Performance Issues"
 chapter = true
-weight = 40
+weight = 140
 +++
 
 # Module 4: Debugging Performance Issues

@@ -1,7 +1,7 @@
 +++
-title = "Module 2"
+title = "Module 2: Serverless Observability"
 chapter = true
-weight = 20
+weight = 120
 +++
 
 # Module 2 - Serverless Observability

@@ -1,7 +1,7 @@
 +++
-title = "Module 5"
+title = "Module 5: Alerting"
 chapter = true
-weight = 50
+weight = 150
 +++
 
 # Module 5 - Alerting

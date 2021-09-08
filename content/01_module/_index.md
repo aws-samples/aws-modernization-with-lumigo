@@ -1,10 +1,10 @@
 +++
-title = "Module 1"
+title = "Module 1: Deploying demo app"
 chapter = true
-weight = 11
+weight = 111
 +++
 
-# Module 1: deploying the Wild Rydes demo app
+# Module 1: Deploying the Wild Rydes demo app
 
 In this step of the workshop you will create and deploy the *Wild Rydes* demo app. The demo app lets you order rides from... unicorns!
 

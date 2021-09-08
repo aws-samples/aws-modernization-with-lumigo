@@ -1,6 +1,6 @@
 ---
-title: "2. Launch Cloud9 IDE Workspace"
-chapter: false
+title: "Launch Cloud9 IDE Workspace"
+chapter: true
 weight: 16
 ---
 
@@ -13,8 +13,8 @@ We will use Amazon Cloud9 to access our AWS account via the AWS CLI in this work
     - Run pre-deployed **lumigo-workshop** Cloud9 environment 
   
 2. In your own AWS Account:
-    - [Create a new Cloud9 IDE environment](15_workspace_setup/20_cloud9.html)
-    - [Create an IAM role for your workspace](15_workspace_setup/21_iamrole.html)
+    - [Create a new Cloud9 IDE environment](../15_workspace_setup/20_cloud9.html)
+    - [Create an IAM role for your workspace](../15_workspace_setup/21_iamrole.html)
 
 Now we will attach the proper role to our Cloud9 EC2 instance and configure a bit more our Cloud9 environment:
 {{% notice info %}}
@@ -22,5 +22,5 @@ Cloud9 normally manages IAM credentials dynamically. This isn't currently compat
 the EKS IAM authentication, so we will disable it and rely on the IAM role instead.
 {{% /notice %}}
 
-- [Attach the IAM role to your workspace](15_workspace_setup/22_workspaceiam.html)
-- [Configure workshop specific requirements](15_workspace_setup/23_cloud.html)
+- [Attach the IAM role to your workspace](../15_workspace_setup/22_workspaceiam.html)
+- [Configure workshop specific requirements](../15_workspace_setup/23_cloud.html)
