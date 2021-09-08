@@ -4,7 +4,7 @@ chapter: true
 weight: 11
 ---
 ## Signing up for Lumigo via AWS Marketplace
-1. Visit [Lumigo - Monitoring & Troubleshooting for Serverless Applications at AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-eth4xzn4llfiu?qid=1609889794394&sr=0-1&ref_=srh_res_product_title)
+1. Visit [Lumigo - Monitoring & Troubleshooting for Serverless Applications in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-eth4xzn4llfiu?qid=1609889794394&sr=0-1&ref_=srh_res_product_title)
 2. You'll land here ![Lumigo Marketplace](/images/marketplace-page.png)
 3. Click the **Continue to Subscribe** button on the top right-hand corner.
 4. You may be prompted to sign in to the AWS account you just created, or the one you will be using for this workshop: ![AWS Signup](/images/aws-signin.png)
