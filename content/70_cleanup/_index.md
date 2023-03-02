@@ -27,3 +27,5 @@ If you are attending AWS Event and using one of provided AWS accounts than you c
 {{% notice warning %}}
 This action stops the Cloud9 Workspace you are currently working on.
 {{% /notice %}}
+
+<!-- TODO: add cleanup for deployed apps!-->
