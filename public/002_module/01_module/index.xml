@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Part 1: Deploying demo app on Troubleshooting AWS Serverless Applications with Lumigo</title>
+    <link>/002_module/01_module.html</link>
+    <description>Recent content in Part 1: Deploying demo app on Troubleshooting AWS Serverless Applications with Lumigo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language><atom:link href="/002_module/01_module/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploying the Wild Rydes Container Demo</title>
+      <link>/002_module/01_module/01-deploy-wild-rydes-container-demo.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/002_module/01_module/01-deploy-wild-rydes-container-demo.html</guid>
+      <description>Clone the demo app repo As a first step, we&amp;rsquo;ll deploy the demo app to your AWS account and then see how we can debug different problems with Lumigo.
+RECOMMENDATION: you shouldn&amp;rsquo;t deploy this to your production AWS account. Use your personal account, or a playground account.
+First, clone this repo locally: git clone git@github.com:lumigo-io/troubleshooting-serverless-workshop-demo Go to the project folder cd troubleshooting-serverless-workshop-demo/ and run npm ci to restore all project dependencies.</description>
+    </item>
+    
+  </channel>
+</rss>

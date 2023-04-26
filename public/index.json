@@ -1,0 +1,274 @@
+[
+{
+	"uri": "/",
+	"title": "Troubleshooting AWS Serverless Applications with Lumigo",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshooting AWS Applications using Lumigo Welcome Lumigo is a troubleshooting platform for modern cloud applications. With one-click distributed tracing, Lumigo lets developers effortlessly find \u0026amp; fix issues in serverless and containerized environments.\nIn this workshop you will learn how easy it can be to debug AWS modern cloud applications with Lumigo.\nWho should take this workshop? Software Developers Infrastructure Engineers DevOps Engineers Solution Architects Site Reliability Engineers (SREs) Technical leads Expected Duration 1-2 Hours per module Module 1: Learning Objectives Create and deploy a demo application utilizing AWS Lambda and Amazon DynamoDB Integrate Lumigo with the demo application and view your application in Lumigo Use Lumigo to troubleshoot timeouts and business logic Identify slow dependencies and debug slow Lambda invocations Setting up alerts in Lumigo Module 2: Learning Objectives: Create and deploy a demo application with Amazon ECS Implement distributed tracing with Lumigo in one-click Troubleshoot: Intermittent failure on ECS using Lumigo Slow draining queues Bad health checks Using Lumigo execution tags to identify, search and filter requests Create AWS Cloudwatch metric alerts with Lumigo "
+},
+{
+	"uri": "/10_prerequisites.html",
+	"title": "Prerequisites",
+	"tags": [],
+	"description": "",
+	"content": "Workshop Prerequisites There are a few prerequisite tasks you must perform before getting started on this workshop. We will step through each of these in turn.\nAccess an AWS account To start the workshop, follow one of the following depending on whether you are\u0026hellip;\n\u0026hellip;attending an AWS hosted event, or \u0026hellip;running the workshop on your own Once you have completed with either setup and would like to setup Cloud IDE, please continue with launching a Cloud9 IDE Workspace\n"
+},
+{
+	"uri": "/001_module.html",
+	"title": "Module 1: Serverless observability",
+	"tags": [],
+	"description": "",
+	"content": "Overview AWS Lambda is the glue that holds serverless architectures together. Before its release, most users felt it was a matter of luck as to whether AWS would let you connect a service to another. If not, you had to spin up a VM or a container to transform the events from one service in a way that your target service could handle them.\nSince Lambda was easier to set up, people assumed that all code they would deploy on it would run faster and cheaper than on other compute services. But the truth is, there’s no free lunch. Lambda functions are easier to set up and manage than VMs or containers, but Lambda is still a professional service that requires understanding to get the most out of it.\nIn this module you will learn how to get observability at your Lambda-based application, find if any issues or optimizations can have place and get understanding at your transactions flow.\nWhat we will cover in this module Deploying a full-stack application using the Serverless framework. One-click distributed tracing with Lumigo Troubleshooting Lambda timeout errors Troubleshooting errors in business logic Troubleshooting performance issues Configuring alerts in Lumigo "
+},
+{
+	"uri": "/002_module.html",
+	"title": "Module 2: Containerized application observability",
+	"tags": [],
+	"description": "",
+	"content": "Overview Amazon Elastic Container Service (Amazon ECS) gives developers the speed, scale and agility of containers without the burden of orchestration. In these large-scale dynamic environments, developers are also leveraging the benefits of AWS managed services to enrich their applications with trusted, ready-made software. Troubleshooting however, still remains with developers. It’s an especially challenging task in containerized environments with many moving components and where a single user request can trigger dozens of interactions across services.\nNew approaches to troubleshooting, tailor-made for microservices, can help developers save time debugging their Amazon ECS applications. In this workshop, you will learn how easy it can be to debug Amazon ECS applications with Lumigo.\nWhat we will cover in this module Coming soon!\n"
+},
+{
+	"uri": "/001_module/01_module.html",
+	"title": "Part 1: Deploying demo app",
+	"tags": [],
+	"description": "",
+	"content": "Deploying the Wild Rydes demo app In this step of the workshop you will create and deploy the Wild Rydes demo app. The demo app lets you order rides from\u0026hellip; unicorns!\nThe architecture for the demo app looks like this:\nThere\u0026rsquo;s a user-facing API Gateway, and a single POST /ride endpoint (backed by the requestUnicorn Lambda function) to order a ride.\nThis requestUnicorn function would:\nFind available unicorns in the area, using an external API (Unicorn Stable API).\nValidate that the unicorn it found from step 1. is not occupied already by checking in the OccupiedUnicorns DynamoDB table.\nPublish details of the ride to the UnicornDispatched SNS topic.\nThese kick off a series of background processing tasks through both SNS and DynamoDB Streams.\nWe will use this demo app to demonstrate various problems you can run into in a production environment and how you can go about debugging them.\n"
+},
+{
+	"uri": "/002_module/01_module.html",
+	"title": "Part 1: Deploying demo app",
+	"tags": [],
+	"description": "",
+	"content": "Deploying the Wild Rydes demo app In this step of the workshop you will create and deploy the Wild Rydes demo app. The demo app lets you order rides from\u0026hellip; unicorns!\nThe full architecture for the ecs demo app looks like this:\nThere\u0026rsquo;s a user-facing API Gateway, and a single POST /ride endpoint (backed by the requestUnicorn Lambda function) to order a ride.\nThis requestUnicorn function would:\nFind available unicorns in the area, using an external API (Unicorn Stable API).\nValidate that the unicorn it found from step 1. is not occupied already by checking in the OccupiedUnicorns DynamoDB table.\nPublish details of the ride to the UnicornDispatched SNS topic.\nThese kick off a series of background processing tasks through both SNS and DynamoDB Streams.\nWe will use this demo app to demonstrate various problems you can run into in a production environment and how you can go about debugging them.\n"
+},
+{
+	"uri": "/002_module/01_module/01-deploy-wild-rydes-container-demo.html",
+	"title": "Deploying the Wild Rydes Container Demo",
+	"tags": [],
+	"description": "",
+	"content": "Clone the demo app repo As a first step, we\u0026rsquo;ll deploy the demo app to your AWS account and then see how we can debug different problems with Lumigo.\nRECOMMENDATION: you shouldn\u0026rsquo;t deploy this to your production AWS account. Use your personal account, or a playground account.\nFirst, clone this repo locally: git clone git@github.com:lumigo-io/troubleshooting-serverless-workshop-demo Go to the project folder cd troubleshooting-serverless-workshop-demo/ and run npm ci to restore all project dependencies.\nOpen serverless.yml, and on line 10, replace \u0026lt;INSERT YOUR NAME\u0026gt; with your name (without spaces or uppercase letters).\nIn the project folder, run npm run deploy-all. This will deploy both the Serverless backend and the Wild Rydes frontend application.\nThe deployment process will take a couple of minutes, so let\u0026rsquo;s talk about what\u0026rsquo;s going on here.\nThis project is using the Serverless framework to package and deploy both the frontend and backend.\nAt the end of the deployment you should see messages like this: Serverless: This deployment will: Serverless: - Upload all files from \u0026#39;client/dist\u0026#39; to bucket \u0026#39;lumigo-workshop-yancui-dev-frontend\u0026#39; Serverless: - Set (and overwrite) bucket \u0026#39;lumigo-workshop-yancui-dev-frontend\u0026#39; configuration Serverless: - Set (and overwrite) bucket \u0026#39;lumigo-workshop-yancui-dev-frontend\u0026#39; bucket policy Serverless: - Set (and overwrite) bucket \u0026#39;lumigo-workshop-yancui-dev-frontend\u0026#39; CORS policy Serverless: Looking for bucket... Serverless: Bucket found... Serverless: Deleting all objects from bucket... Serverless: Configuring bucket... Serverless: Configuring policy for bucket... Serverless: Retaining existing tags... Serverless: Configuring CORS for bucket... Serverless: Uploading client files to bucket... Serverless: Success! Your site should be available at http://lumigo-workshop-yancui-dev-frontend.s3-website-us-east-1.amazonaws.com/ The URL at the end is where the frontend is hosted, go to it.\nThat\u0026rsquo;s it, you\u0026rsquo;ve successfully deployed the Wild Rydes demo app!\nRegister and sign in Unfortunately, there\u0026rsquo;s no \u0026ldquo;Registration\u0026rdquo; button anywhere on the page, so you need to add /register.html to the end of the URL to open the registration page.\nRegister a new account.\nGet the verification code from your registered email.\nAfter you enter the verification code, you should be taken back to the sign-in page.\nSign in. Wait a moment for the map to load, then click anywhere on the map to put down a marker. This is where you\u0026rsquo;ll hail for a ryde. Click Request Unicorn. If the request was successful, then you\u0026rsquo;ll a see unicorn appear and arrive at your marker. Do this several times, and you might see Unicorn not available because all the unicorns are busy.\nAnd from time to time, nothing happens after you click Request Unicorn and then you get an error popup like this:\nSo, looks like there are a few problems in this app, let\u0026rsquo;s find them!\n"
+},
+{
+	"uri": "/001_module/01_module/01-deploy-wild-rydes-demo.html",
+	"title": "Deploying the Wild Rydes Demo Application",
+	"tags": [],
+	"description": "",
+	"content": "Clone the demo app repo As a first step, we\u0026rsquo;ll deploy the demo app to your AWS account and then see how we can debug different problems with Lumigo.\nRECOMMENDATION: you shouldn\u0026rsquo;t deploy this to your production AWS account. Use your personal account, or a playground account.\nFirst, clone this repo locally: git clone git@github.com:lumigo-io/troubleshooting-serverless-workshop-demo Go to the project folder cd troubleshooting-serverless-workshop-demo/ and run npm ci to restore all project dependencies.\nOpen serverless.yml, and on line 10, replace \u0026lt;INSERT YOUR NAME\u0026gt; with your name (without spaces or uppercase letters).\nIn the project folder, run npm run deploy-all. This will deploy both the Serverless backend and the Wild Rydes frontend application.\nThe deployment process will take a couple of minutes, so let\u0026rsquo;s talk about what\u0026rsquo;s going on here.\nThis project is using the Serverless framework to package and deploy both the frontend and backend.\nAt the end of the deployment you should see messages like this: Serverless: This deployment will: Serverless: - Upload all files from \u0026#39;client/dist\u0026#39; to bucket \u0026#39;lumigo-workshop-yancui-dev-frontend\u0026#39; Serverless: - Set (and overwrite) bucket \u0026#39;lumigo-workshop-yancui-dev-frontend\u0026#39; configuration Serverless: - Set (and overwrite) bucket \u0026#39;lumigo-workshop-yancui-dev-frontend\u0026#39; bucket policy Serverless: - Set (and overwrite) bucket \u0026#39;lumigo-workshop-yancui-dev-frontend\u0026#39; CORS policy Serverless: Looking for bucket... Serverless: Bucket found... Serverless: Deleting all objects from bucket... Serverless: Configuring bucket... Serverless: Configuring policy for bucket... Serverless: Retaining existing tags... Serverless: Configuring CORS for bucket... Serverless: Uploading client files to bucket... Serverless: Success! Your site should be available at http://lumigo-workshop-yancui-dev-frontend.s3-website-us-east-1.amazonaws.com/ The URL at the end is where the frontend is hosted, go to it.\nThat\u0026rsquo;s it, you\u0026rsquo;ve successfully deployed the Wild Rydes demo app!\nRegister and sign in Unfortunately, there\u0026rsquo;s no \u0026ldquo;Registration\u0026rdquo; button anywhere on the page, so you need to add /register.html to the end of the URL to open the registration page.\nRegister a new account.\nGet the verification code from your registered email.\nAfter you enter the verification code, you should be taken back to the sign-in page.\nSign in. Wait a moment for the map to load, then click anywhere on the map to put down a marker. This is where you\u0026rsquo;ll hail for a ryde. Click Request Unicorn. If the request was successful, then you\u0026rsquo;ll a see unicorn appear and arrive at your marker. Do this several times, and you might see Unicorn not available because all the unicorns are busy.\nAnd from time to time, nothing happens after you click Request Unicorn and then you get an error popup like this:\nSo, looks like there are a few problems in this app, let\u0026rsquo;s find them!\n"
+},
+{
+	"uri": "/10_prerequisites/13_aws_event.html",
+	"title": "Part 1: At an AWS Event...",
+	"tags": [],
+	"description": "",
+	"content": "To complete this workshop, you are provided with an AWS account via the AWS Event Engine service. A team hash will be provided to you by event staff.\nIf you are currently logged in to an AWS Account, you can logout using this link\nAccess AWS Account Connect to the portal by clicking the button or browsing to https://dashboard.eventengine.run/. The following screen shows up. Enter the provided hash in the text box. The button on the bottom right corner changes to Accept Terms \u0026amp; Login. Click on that button to continue. You will be asked to Sign in. Simply choose \u0026ldquo;Email One-Time Password (OTP)\u0026rdquo; option, enter your email, and click \u0026ldquo;Send Passcode\u0026rdquo;. Check you email for OTP 6-digit code and enter it on the screen. Leave the Event Engine tab open (A new tab will be used for the next step)\nChoose AWS Console, then Open AWS Console Use a single region for the duration of this workshop. This workshop supports the following regions:\nus-east-1 (US East - N.Virginia) Make sure US East (N.Virginia) region is selected in the top right corner.\nThis account will expire at the end of the workshop and the all the resources created will be automatically deprovision-ed. You will not be able to access this account after today.\nNext step Once you have completed the step above, you can leave the AWS console open. You can now move to the Launch Cloud9 IDE Workspace section.\n"
+},
+{
+	"uri": "/10_prerequisites/14_self_paced.html",
+	"title": "Part 2: On your own",
+	"tags": [],
+	"description": "",
+	"content": "Running the workshop on your own Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Kubecon, Immersion Day, etc), go to Start the workshop at an AWS event.\nYour account must have the ability to create new IAM roles and scope other IAM permissions.\nYou are responsible for the cost of the AWS services used while running this workshop in your AWS account.\nIf you don\u0026rsquo;t already have an AWS account with Administrator access: create one now by clicking here\nOnce you have an AWS account, ensure you are following the remaining workshop steps as an IAM user with administrator access to the AWS account: Create a new IAM user to use for the workshop\nEnter the user details: Attach the AdministratorAccess IAM Policy: Click to create the new user: Take note of the login URL and save: "
+},
+{
+	"uri": "/10_prerequisites/14_self_paced/141_lumigo_mp_trial.html",
+	"title": "Lumigo Sign Up",
+	"tags": [],
+	"description": "",
+	"content": "Signing up for Lumigo via AWS Marketplace Visit Lumigo - Monitoring \u0026amp; Troubleshooting for Serverless Applications in AWS Marketplace You\u0026rsquo;ll land here Click the Continue to Subscribe button on the top right-hand corner. You may be prompted to sign in to the AWS account you just created, or the one you will be using for this workshop: Select Free Community in Contract Options option (which includes 150K AWS Lambda invocations traced per month), and select Yes\\No for Auto Renew option on your choice. Your page should look like this: Click the Create contract button in the purchase box. You will NOT be charged after the free trial. You also can find more about Lumigo pricing options and FAQs This pop-up box will appear: Click the Pay now button. You have successfully signed up for Lumigo! Click the Setup your account button, and you\u0026rsquo;ll land at Lumigo\u0026rsquo;s Login page. Login if you already have Lumigo\u0026rsquo;s account or click Create New Account: Once you\u0026rsquo;ve filled out the details, go to your Lumigo dashboard And that\u0026rsquo;s it! You\u0026rsquo;ve are now done with signing up with Lumigo! Click the next button to proceed with requesting AWS credits so this workshop will be FREE.\n"
+},
+{
+	"uri": "/10_prerequisites/15_workspace_setup.html",
+	"title": "Part 3: Launch Cloud9 IDE Workspace",
+	"tags": [],
+	"description": "",
+	"content": " Feel free to skip this section if you prefer to use your own IDE configured and have AWS CLI installed. If you attend AWS event and use free AWS sandbox account provided check for your access credentials via CLI on the Event Engine Team Dashboard.\nAWS Cloud9 is a cloud-based integrated development environment (IDE) that let you write, run, and debug your code with just a browser. It includes a code editor, debugger, and terminal. Cloud9 comes prepackaged with essential tools for popular programming languages, including JavaScript, Python, PHP, and more, so you don’t need to install files or configure your development machine to start new projects.\nWe will use Amazon Cloud9 to access our AWS account via the AWS CLI in this workshop. There are a few steps to complete to set this up\nIf you are attending AWS Event:\nNavigate to the cloud9 console or just search for it under the AWS console services menu Run pre-deployed lumigo-workshop Cloud9 environment In your own AWS Account:\nCreate a new Cloud9 IDE environment Create an IAM role for your workspace Now we will attach the proper role to our Cloud9 EC2 instance and configure a bit more our Cloud9 environment: Cloud9 normally manages IAM credentials dynamically. This isn\u0026rsquo;t currently compatible with the EKS IAM authentication, so we will disable it and rely on the IAM role instead.\nAttach the IAM role to your workspace Configure workshop specific requirements "
+},
+{
+	"uri": "/10_prerequisites/15_workspace_setup/150_cloud9.html",
+	"title": "Create a new Cloud9 IDE environment",
+	"tags": [],
+	"description": "",
+	"content": "1 . Within the AWS console, use the region drop list to select us-east-1 (N. Virginia). This will ensure the workshop script provisions the resources in this same region\n2 . Navigate to the cloud9 console or just search for it under the AWS console services menu\n3 . Click the Create environment button\n4 . For the name use lumigo-workshop, then click Next step\n5 . Select the default instance type t3.medium\n6 . Leave all the other settings as default and click Next step followed by Create environment\nThis will take about 1-2 minutes to provision\nConfigure Cloud9 IDE environment When the environment comes up, customize the environment by:\n1 . Close the welcome page tab\n2 . Close the lower work area tab\n3 . Open a new terminal tab in the main work area.\n4 . Hide the left-hand environment explorer by clicking on the left side environment tab.\nIf you don\u0026rsquo;t like this dark theme, you can change it from the View / Themes Cloud9 workspace menu.\nCloud9 requires third-party-cookies. You can whitelist the specific domains. Ad blockers, javascript disablers, and tracking blockers should be disabled for the cloud9 domain, or connecting to the workspace might be impacted.\n"
+},
+{
+	"uri": "/10_prerequisites/15_workspace_setup/151_iamrole.html",
+	"title": "Create an IAM role for your workspace",
+	"tags": [],
+	"description": "",
+	"content": " Starting from here, when you see command to be entered such as below, you will enter these commands into Cloud9 IDE. You can use the Copy to clipboard feature (right hand upper corner) to simply copy and paste into Cloud9. In order to paste, you can use Ctrl + V for Windows or Command + V for Mac.\nFollow this deep link to create an IAM role with Administrator access. Confirm that AWS service and EC2 are selected, then click Next: Permissions to view permissions. Confirm that AdministratorAccess is checked, then click Next: Tags, then Next: Review to review. Enter Lumigo-Workshop-Admin for the Role name, and select Create role When you create IAM policies in your production account, follow the standard security advice of granting least privilege, or granting only the permissions required to perform a task. Determine what users (and roles) need to do and then craft policies that allow them to perform only those tasks.\n"
+},
+{
+	"uri": "/10_prerequisites/15_workspace_setup/152_workspaceiam.html",
+	"title": "Attach the IAM role to your Workspace",
+	"tags": [],
+	"description": "",
+	"content": " Follow this deep link to find your Cloud9 EC2 instance\nSelect the instance, then choose Actions / Security / Modify IAM role\nChoose Lumigo-Workshop-Admin from the IAM Role, and select Save\n"
+},
+{
+	"uri": "/10_prerequisites/15_workspace_setup/153_cloud.html",
+	"title": "Configure workspace for Lumigo Workshop",
+	"tags": [],
+	"description": "",
+	"content": " Return to your workspace and click the gear icon (in top right corner), or click to open a new tab and choose \u0026ldquo;Open Preferences\u0026rdquo;\nSelect AWS SETTINGS and turn off AWS managed temporary credentials Close the Preferences tab\nCopy and run (paste with Ctrl+P) the commands below into the terminal window. Click Enter to execute last command. You should see \u0026ldquo;IAM role valid\u0026rdquo; message if everything ran correctly. Before running it, you can review what it does by reading through the comments.\n# Update awscli sudo pip install --upgrade awscli \u0026amp;\u0026amp; hash -r # Install jq command-line tool for parsing JSON, and bash-completion sudo yum -y install jq gettext bash-completion moreutils # Install yq for yaml processing echo \u0026#39;yq() { docker run --rm -i -v \u0026#34;${PWD}\u0026#34;:/workdir mikefarah/yq yq \u0026#34;$@\u0026#34; }\u0026#39; | tee -a ~/.bashrc \u0026amp;\u0026amp; source ~/.bashrc # Verify the binaries are in the path and executable for command in jq aws do which $command \u0026amp;\u0026gt;/dev/null \u0026amp;\u0026amp; echo \u0026#34;$command in path\u0026#34; || echo \u0026#34;$command NOT FOUND\u0026#34; done # Remove existing credentials file. rm -vf ${HOME}/.aws/credentials # Set the ACCOUNT_ID and the region to work with our desired region export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r \u0026#39;.region\u0026#39;) test -n \u0026#34;$AWS_REGION\u0026#34; \u0026amp;\u0026amp; echo AWS_REGION is \u0026#34;$AWS_REGION\u0026#34; || echo AWS_REGION is not set # Configure .bash_profile export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account) echo \u0026#34;export ACCOUNT_ID=${ACCOUNT_ID}\u0026#34; | tee -a ~/.bash_profile echo \u0026#34;export AWS_REGION=${AWS_REGION}\u0026#34; | tee -a ~/.bash_profile aws configure set default.region ${AWS_REGION} aws configure get default.region # Validate that our IAM role is valid. aws sts get-caller-identity --query Arn | grep Lumigo-Workshop-Admin -q \u0026amp;\u0026amp; echo \u0026#34;IAM role valid\u0026#34; || echo \u0026#34;IAM role NOT valid\u0026#34; If the IAM role is not valid, DO NOT PROCEED. Go back and confirm the steps on this page.\nSetup access to GitHub in Cloud9 environment Generate SSH key pair and display the public key to be copied to GitHub. Leave the default file name by pressing enter when asked for a file to save the key, and enter the passphrase on your choice (twice to confirm). You will see the key starting from \u0026ldquo;ssh-rsa\u0026rdquo;\nssh-keygen -t rsa \u0026amp;\u0026amp; \\ cat /home/ec2-user/.ssh/id_rsa.pub Go to your GitHub account keys, click \u0026ldquo;New SSH key\u0026rdquo;, add a title (for example Lumigo Workshop Cloud9 Environment), insert public key into \u0026ldquo;Key\u0026rdquo; section and click \u0026ldquo;Add SSH key\u0026rdquo;\nCheck SSH agent is running, and add private SSH key to the registry. Enter your passphrase when asked\neval $(ssh-agent -s) \u0026amp;\u0026amp; \\ ssh-add /home/ec2-user/.ssh/id_rsa Use command clear in the terminal to clean it from previous outputs.\n"
+},
+{
+	"uri": "/70_cleanup.html",
+	"title": "Cleanup",
+	"tags": [],
+	"description": "",
+	"content": "Cleanup If you are attending AWS Event and using one of provided AWS accounts than you can skip this section.\nDelete Lumigo-Workshop-Admin IAM role\naws iam detach-role-policy --role-name Lumigo-Workshop-Admin --policy-arn arn:aws:iam::aws:policy/AdministratorAccess aws iam delete-role --role-name Lumigo-Workshop-Admin Remove Cloud9 Workstation\n``` aws cloud9 delete-environment --environment-id $(aws cloud9 list-environments | jq '.environmentIds[]' | xargs) ``` This action stops the Cloud9 Workspace you are currently working on.\n"
+},
+{
+	"uri": "/80_survey.html",
+	"title": "Survey",
+	"tags": [],
+	"description": "",
+	"content": "Survey To help us improve this product, please take some time to fill out the Survey "
+},
+{
+	"uri": "/conclusion.html",
+	"title": "Next Steps",
+	"tags": [],
+	"description": "",
+	"content": "Next Steps I hope you have enjoyed these exercises and got a feel of how easy it can be to debug serverless applications with Lumigo.\nThere is a generous free tier where you can trace up to 150,000 Lambda invocations a month for free.\nWhich means you can pretty much trace your dev accounts for free, and maybe even your production accounts, until you have sufficient amount of traffic.\nAnd if you apply the code Lumigo500, under Settings -\u0026gt; Plan -\u0026gt; I have a special code, then you can bump that free up to 500,000 traced invocations per a month!\nWhat if I have more than 1 AWS account? No problems. You can manage multiple accounts (we call them projects) with your Lumigo user, and you can quickly switch between different projects with the Project drop-down in the top right corner of the screen.\nHow do I control who has access to the Lumigo platform? You can do that in the Team Management page. Basic role lets you view and query data in the Lumigo platform. Admin role lets you change configurations (e.g. alert configs).\nFor more information, please visit the Lumigo docs.\nlumigo-cli Besides the core Lumigo platform, we also have a number of popular open source tools you can use for free.\nThe most important of which is the lumigo-cli, a CLI tool that simplifies a lot of your daily serverless tasks, e.g.\npowertuning a Lambda function to right-size its memory setting\nanalyze Lambda cold starts\nanalyze Lambda costs\nreplay SQS messages from a DLQ to SQS/SNS/Kinesis\ntail events in SNS/SQS/Kinesis/DynamoDB/EventBridge\ntail CloudWatch logs\nswitch between AWS CLI profiles\n"
+},
+{
+	"uri": "/001_module/02_module.html",
+	"title": "Part 2: Serverless Observability",
+	"tags": [],
+	"description": "",
+	"content": "In this module, you will integrate Lumigo with the demo application.\nViewing your application in Lumigo Lumigo will trace the invocations of your application. The first thing we will use it for is to get an understanding of how our application looks in real life.\nClick on the System map to have an overview of your application\u0026rsquo;s architecture: Notice how this is identical to the architecture diagram we drew by hand, except it\u0026rsquo;s drawn from the actual invocations that Lumigo has traced, so it\u0026rsquo;s always up-to-date and based on actual data.\nExplore the different functions\u0026rsquo; stats and invocations in your account using the Functions page: Click into any of the functions to get more details on it: Clicking on the Metrics tab would show you some additional metrics like the number of cold starts as well as cold start durations.\nAlso, don\u0026rsquo;t forget to check out the Transactions page to see the recent transactions that Lumigo has traced: In this page, if you click on one of the transactions then you can see what happened on that transaction alongside the logs for all the participating functions. Click on one of the transactions that started with the requestUnicorn function and you should see something like this: If you click on any of the icons in the graph, you can see even more information about that resource, including any request and response to and fro the resource. For example, if you click on the requestUnicorn function, you should see its return value, invocation event, environment variables and its logs: Similarly, if you click on the unicornDispatched SNS topic, you will see the sns.Publish request that requestUnicorn function made to it. Notice that sensitive data like API keys and auth tokens are scrubbed and were never sent to Lumigo\u0026rsquo;s backend in the first place.\nWhere a resource was accessed multiple times during a transaction, you can also iterate through all the individual requests too. For example, the requestUnicorn function did a dynamodb.Get and then dynamodb.Put against the OccupiedUnicorns table:\nHaving all these information at your fingertips makes it easy for you to understand what actually happened during this transaction without spraying your code with manual instrumentation code!\nOne final thing, click on Timeline shows you where the time was spent on this transaction to help you identify culprits when performance issues arise. Now that you know your way around Lumigo, let\u0026rsquo;s use it to troubleshoot the issues we are seeing in the demo app.\n"
+},
+{
+	"uri": "/002_module/02_module.html",
+	"title": "Part 2: Serverless Observability",
+	"tags": [],
+	"description": "",
+	"content": "In this module, you will integrate Lumigo with the demo application.\nViewing your application in Lumigo Lumigo will trace the invocations of your application. The first thing we will use it for is to get an understanding of how our application looks in real life.\nClick on the System map to have an overview of your application\u0026rsquo;s architecture: Notice how this is identical to the architecture diagram we drew by hand, except it\u0026rsquo;s drawn from the actual invocations that Lumigo has traced, so it\u0026rsquo;s always up-to-date and based on actual data.\nExplore the different functions\u0026rsquo; stats and invocations in your account using the Functions page: Click into any of the functions to get more details on it: Clicking on the Metrics tab would show you some additional metrics like the number of cold starts as well as cold start durations.\nAlso, don\u0026rsquo;t forget to check out the Transactions page to see the recent transactions that Lumigo has traced: In this page, if you click on one of the transactions then you can see what happened on that transaction alongside the logs for all the participating functions. Click on one of the transactions that started with the requestUnicorn function and you should see something like this: If you click on any of the icons in the graph, you can see even more information about that resource, including any request and response to and fro the resource. For example, if you click on the requestUnicorn function, you should see its return value, invocation event, environment variables and its logs: Similarly, if you click on the unicornDispatched SNS topic, you will see the sns.Publish request that requestUnicorn function made to it. Notice that sensitive data like API keys and auth tokens are scrubbed and were never sent to Lumigo\u0026rsquo;s backend in the first place.\nWhere a resource was accessed multiple times during a transaction, you can also iterate through all the individual requests too. For example, the requestUnicorn function did a dynamodb.Get and then dynamodb.Put against the OccupiedUnicorns table:\nHaving all these information at your fingertips makes it easy for you to understand what actually happened during this transaction without spraying your code with manual instrumentation code!\nOne final thing, click on Timeline shows you where the time was spent on this transaction to help you identify culprits when performance issues arise. Now that you know your way around Lumigo, let\u0026rsquo;s use it to troubleshoot the issues we are seeing in the demo app.\n"
+},
+{
+	"uri": "/001_module/03_module.html",
+	"title": "Part 3: Troubleshooting",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshooting with Lumigo In this module, we\u0026rsquo;ll use Lumigo to troubleshoot the issues in the demo app.\nIf you go to the Issues page and you will see at a glance all the issues that Lumigo has identified in your environment.\n"
+},
+{
+	"uri": "/002_module/03_module.html",
+	"title": "Part 3: Troubleshooting",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshooting with Lumigo In this module, we\u0026rsquo;ll use Lumigo to troubleshoot the issues in the demo app.\nIf you go to the Issues page and you will see at a glance all the issues that Lumigo has identified in your environment.\n"
+},
+{
+	"uri": "/001_module/03_module/10-troubleshoot-timeouts-sync-functions.html",
+	"title": "3.1 Troubleshoot timeouts (synchronous functions)",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshoot timeouts (synchronous functions) Let\u0026rsquo;s see how we can use Lumigo to troubleshoot timeouts for synchronous Lambda functions such as those handling API requests.\nIf you click on the timed out issue for the requestUnicorn function, it will take you to the function details page for the function and show you the invocations that timed out. Click on one of the timed out transactions to see what happened in that transaction. From the function logs, you can see a message like 2020-10-20T11:40:37.402Z\t3ea3b770-2986-4926-a0b3-2c6a045bfa20\tINFO\tFinding unicorn for 42.34963749150315 , -71.05718295574066 and then 6 seconds later, the invocation timed out.\nClick on the Timeline tab and you will see that the request to 4fsay0n12a.execute-api.us-east-1.amazonaws.com never completed, hence the N/A. So this was the cause for the invocation timing out. "
+},
+{
+	"uri": "/002_module/03_module/10-troubleshoot-timeouts-sync-functions.html",
+	"title": "3.1 Troubleshoot timeouts (synchronous functions)",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshoot timeouts (synchronous functions) Let\u0026rsquo;s see how we can use Lumigo to troubleshoot timeouts for synchronous Lambda functions such as those handling API requests.\nIf you click on the timed out issue for the requestUnicorn function, it will take you to the function details page for the function and show you the invocations that timed out. Click on one of the timed out transactions to see what happened in that transaction. From the function logs, you can see a message like 2020-10-20T11:40:37.402Z\t3ea3b770-2986-4926-a0b3-2c6a045bfa20\tINFO\tFinding unicorn for 42.34963749150315 , -71.05718295574066 and then 6 seconds later, the invocation timed out.\nClick on the Timeline tab and you will see that the request to 4fsay0n12a.execute-api.us-east-1.amazonaws.com never completed, hence the N/A. So this was the cause for the invocation timing out. "
+},
+{
+	"uri": "/001_module/03_module/20-troubleshoot-timeouts-async-functions.html",
+	"title": "3.2 Troubleshoot timeouts (asynchronous functions)",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshoot timeouts (asynchronous functions) Asynchronous Lambda functions (such as those handling background tasks via SNS topics, EventBridge buses or SQS queues) are often tricky to debug because their failures are silent. These failures can go unnoticed for months or even years! The problems they cause would often manifest in unpredictable ways that makes it difficult to trace the symptoms to the original errors.\nSo let\u0026rsquo;s take a moment to see how we can troubleshoot timeouts for these asynchronous Lambda functions.\nGo to back the Issues page and you\u0026rsquo;ll see that the calcSalaries function has also timed out a few times. As before, click on the timed out issue for calcSalaries and see the timed out invocations. Click on one of the timed out transactions to see what happened. Unfortunately, there\u0026rsquo;s nothing in the logs to indicate what happened. But let\u0026rsquo;s click on Timeline tab to see what happened. "
+},
+{
+	"uri": "/002_module/03_module/20-troubleshoot-timeouts-async-functions.html",
+	"title": "3.2 Troubleshoot timeouts (asynchronous functions)",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshoot timeouts (asynchronous functions) Asynchronous Lambda functions (such as those handling background tasks via SNS topics, EventBridge buses or SQS queues) are often tricky to debug because their failures are silent. These failures can go unnoticed for months or even years! The problems they cause would often manifest in unpredictable ways that makes it difficult to trace the symptoms to the original errors.\nSo let\u0026rsquo;s take a moment to see how we can troubleshoot timeouts for these asynchronous Lambda functions.\nGo to back the Issues page and you\u0026rsquo;ll see that the calcSalaries function has also timed out a few times. As before, click on the timed out issue for calcSalaries and see the timed out invocations. Click on one of the timed out transactions to see what happened. Unfortunately, there\u0026rsquo;s nothing in the logs to indicate what happened. But let\u0026rsquo;s click on Timeline tab to see what happened. "
+},
+{
+	"uri": "/001_module/03_module/30-troubleshoot-business-logic-errors.html",
+	"title": "3.3 Troubleshoot business logic errors",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshoot business logic errors Lumigo is not just great at monitoring your production application and alerting you to problems. Turns out our customers also love using it for debugging business logic errors during development because they can easily peek into the internal state of their application - every invocation event, event environment variable that was used, and the request and response for every HTTP/TCP requests their functions make to other services!\nLet\u0026rsquo;s see how we can use this information to help us debug a problem in our business logic.\nGo to back the Issues page and you\u0026rsquo;ll see that the uploadReceipt function has thrown a few TypeError. As before, click on the row to see the invocations.\nClick on one of the transactions to see what happened. In this transactions view, you can see that whole transaction starting from the original request to find a unicorn. You can see the uploadReceipt function being highlighted as where the problem is. Since SNS is an async event source for Lambda, these failed invocations are retried automatically. From the overlapped Lambda icon (and the fact that it says 3 retries), you can tell that this invocation was indeed retried, but still failed. Click on the uploadReceipt function\u0026rsquo;s icon to see more details about these invocations. Well, we see the error Cannot read property 'Name' of undefined and probably have some suspicion as to what it might be - maybe the SNS message is missing properties.\nTo find evidence to support our hypothesis, let\u0026rsquo;s look for a successful invocation and compare that with this.\nClick Show Similar Transactions on the top right. If you don\u0026rsquo;t see full graph and Show Similar Transactions button you need to click See Full Transaction button on the left top corner of the graph window.\nAs you can see, a lot of the transactions had a TypeError, we\u0026rsquo;re looking for a successful transaction without any issues.\nClick on one of the successful transaction. Click on the uploadReceipt function to bring up its details. One thing that jumps out is that the SNS message contains an object in RideDetail which has a Name property. contrast that with the failed invocation, which complained about being to read Name of undefined:\nSo there\u0026rsquo;s the problem. Looking at the code for uploadReceipt confirms this:\n"
+},
+{
+	"uri": "/002_module/03_module/30-troubleshoot-business-logic-errors.html",
+	"title": "3.3 Troubleshoot business logic errors",
+	"tags": [],
+	"description": "",
+	"content": "Troubleshoot business logic errors Lumigo is not just great at monitoring your production application and alerting you to problems. Turns out our customers also love using it for debugging business logic errors during development because they can easily peek into the internal state of their application - every invocation event, event environment variable that was used, and the request and response for every HTTP/TCP requests their functions make to other services!\nLet\u0026rsquo;s see how we can use this information to help us debug a problem in our business logic.\nGo to back the Issues page and you\u0026rsquo;ll see that the uploadReceipt function has thrown a few TypeError. As before, click on the row to see the invocations.\nClick on one of the transactions to see what happened. In this transactions view, you can see that whole transaction starting from the original request to find a unicorn. You can see the uploadReceipt function being highlighted as where the problem is. Since SNS is an async event source for Lambda, these failed invocations are retried automatically. From the overlapped Lambda icon (and the fact that it says 3 retries), you can tell that this invocation was indeed retried, but still failed. Click on the uploadReceipt function\u0026rsquo;s icon to see more details about these invocations. Well, we see the error Cannot read property 'Name' of undefined and probably have some suspicion as to what it might be - maybe the SNS message is missing properties.\nTo find evidence to support our hypothesis, let\u0026rsquo;s look for a successful invocation and compare that with this.\nClick Show Similar Transactions on the top right. If you don\u0026rsquo;t see full graph and Show Similar Transactions button you need to click See Full Transaction button on the left top corner of the graph window.\nAs you can see, a lot of the transactions had a TypeError, we\u0026rsquo;re looking for a successful transaction without any issues.\nClick on one of the successful transaction. Click on the uploadReceipt function to bring up its details. One thing that jumps out is that the SNS message contains an object in RideDetail which has a Name property. contrast that with the failed invocation, which complained about being to read Name of undefined:\nSo there\u0026rsquo;s the problem. Looking at the code for uploadReceipt confirms this:\n"
+},
+{
+	"uri": "/001_module/04_module.html",
+	"title": "Part 4: Debugging Performance Issues",
+	"tags": [],
+	"description": "",
+	"content": "Debugging Performance Issues In this module, we\u0026rsquo;ll see how you can identify slow dependencies and debug slow Lambda invocations.\n"
+},
+{
+	"uri": "/002_module/04_module.html",
+	"title": "Part 4: Debugging Performance Issues",
+	"tags": [],
+	"description": "",
+	"content": "Debugging Performance Issues In this module, we\u0026rsquo;ll see how you can identify slow dependencies and debug slow Lambda invocations.\n"
+},
+{
+	"uri": "/001_module/04_module/10-debugging-performance-issues.html",
+	"title": "4.1 Debugging performance issues",
+	"tags": [],
+	"description": "",
+	"content": "Debugging performance issues Go to the Dashboard page, and have a look at the Service Latency widget at the bottom right. This shows you the tail latency for services that you are calling from your Lambda functions. By default, this widget is sorted by the p95 (ms) column. Somewhere amongst the top, you might see similar to 4fsay0n12a.execute-api.us-east-1.amazonaws.com up there, by either p95 (ms) or p99 (ms). Click on the p99 latency value (454 in my case) This takes you to the Explore page with a prefilled query that finds the transactions where this service was involved and recorded a latency that\u0026rsquo;s equal to or greater than the latency value you clicked on.\nClick on one of these transaction to see what happened. In this transaction, you can see that we made 3 calls to 4fsay0n12a.execute-api.us-east-1.amazonaws.com.\nClick on the Timeline tab and you will see that one of the requests to 4fsay0n12a.execute-api.us-east-1.amazonaws.com took 4345ms. Click on the slow HTTP request, and see that the response was for Bucephalus. Go back to the Explore page and find other transactions where 4fsay0n12a.execute-api.us-east-1.amazonaws.com had been slow. See if you can spot any commonalities to these slow requests. "
+},
+{
+	"uri": "/002_module/04_module/10-debugging-performance-issues.html",
+	"title": "4.1 Debugging performance issues",
+	"tags": [],
+	"description": "",
+	"content": "Debugging performance issues Go to the Dashboard page, and have a look at the Service Latency widget at the bottom right. This shows you the tail latency for services that you are calling from your Lambda functions. By default, this widget is sorted by the p95 (ms) column. Somewhere amongst the top, you might see similar to 4fsay0n12a.execute-api.us-east-1.amazonaws.com up there, by either p95 (ms) or p99 (ms). Click on the p99 latency value (454 in my case) This takes you to the Explore page with a prefilled query that finds the transactions where this service was involved and recorded a latency that\u0026rsquo;s equal to or greater than the latency value you clicked on.\nClick on one of these transaction to see what happened. In this transaction, you can see that we made 3 calls to 4fsay0n12a.execute-api.us-east-1.amazonaws.com.\nClick on the Timeline tab and you will see that one of the requests to 4fsay0n12a.execute-api.us-east-1.amazonaws.com took 4345ms. Click on the slow HTTP request, and see that the response was for Bucephalus. Go back to the Explore page and find other transactions where 4fsay0n12a.execute-api.us-east-1.amazonaws.com had been slow. See if you can spot any commonalities to these slow requests. "
+},
+{
+	"uri": "/001_module/04_module/20-identifying-slow-cold-starts.html",
+	"title": "4.2 Identifying slow cold starts",
+	"tags": [],
+	"description": "",
+	"content": "Identifying slow cold starts Ah, yes, the dreaded Lambda cold starts! So often the cause of many performance concerns, especially for user-facing API functions.\nIf you go to the Functions page and navigate to any of your function, you can see information about that function\u0026rsquo;s cold starts in the Metrics tab.\nWhen you have lots of functions, it\u0026rsquo;s not feasible to go through each function individually. In the Dashboard you can use the Functions with most Cold Starts widget to quickly identify problematic functions.\nUser-facing functions, such as those behind API Gateway, are often latency sensitive. In some cases, you may wish to use Provisioned Concurrency to eliminate cold starts altogether. For instance, when you have really strict latency requirements, or if you\u0026rsquo;re using JVM/.Net Core runtimes and cannot optimize your code any further to keep cold start duration under an acceptable latency range.\nIn some really unfortunate cases, cold starts can also stack up when one API function calls another (via API Gateway) and can cause further delays. You can easily spot these cases in the Transactions page, by looking at the Cold Starts column.\nIf this happens frequently, then it might also be a good reason to use Provisioned Concurrency. Maybe one cold start of a few hundred milliseconds is acceptable, but when a few of them stack up on a single transaction, that can result in noticeable delays to users.\nFinally, you can also use the lumigo-cli, our open source CLI tool, and run the analyze-lambda-cold-starts command to analyze the cold start performance for all your functions in an AWS account.\n"
+},
+{
+	"uri": "/002_module/04_module/20-identifying-slow-cold-starts.html",
+	"title": "4.2 Identifying slow cold starts",
+	"tags": [],
+	"description": "",
+	"content": "Identifying slow cold starts Ah, yes, the dreaded Lambda cold starts! So often the cause of many performance concerns, especially for user-facing API functions.\nIf you go to the Functions page and navigate to any of your function, you can see information about that function\u0026rsquo;s cold starts in the Metrics tab.\nWhen you have lots of functions, it\u0026rsquo;s not feasible to go through each function individually. In the Dashboard you can use the Functions with most Cold Starts widget to quickly identify problematic functions.\nUser-facing functions, such as those behind API Gateway, are often latency sensitive. In some cases, you may wish to use Provisioned Concurrency to eliminate cold starts altogether. For instance, when you have really strict latency requirements, or if you\u0026rsquo;re using JVM/.Net Core runtimes and cannot optimize your code any further to keep cold start duration under an acceptable latency range.\nIn some really unfortunate cases, cold starts can also stack up when one API function calls another (via API Gateway) and can cause further delays. You can easily spot these cases in the Transactions page, by looking at the Cold Starts column.\nIf this happens frequently, then it might also be a good reason to use Provisioned Concurrency. Maybe one cold start of a few hundred milliseconds is acceptable, but when a few of them stack up on a single transaction, that can result in noticeable delays to users.\nFinally, you can also use the lumigo-cli, our open source CLI tool, and run the analyze-lambda-cold-starts command to analyze the cold start performance for all your functions in an AWS account.\n"
+},
+{
+	"uri": "/001_module/05_module.html",
+	"title": "Part 5: Alerting",
+	"tags": [],
+	"description": "",
+	"content": "In this module, we\u0026rsquo;ll set up alerts in Lumigo.\nSetting up alerts Go to the Alerts page, you can see that Lumigo has configured a couple of default alerts. By enabling auto-trace on our functions, they have been configured with these default alerts.\nBy default, they\u0026rsquo;re configured to send you at most one alert per an hour. You can dial this up or down (up to as frequent as to alert you on Every Event).\nClick on each of the alerts and change the Alert Frequency in the dialogue to Every Event. Don\u0026rsquo;t forget to click Save Alert when you\u0026rsquo;re done. Let\u0026rsquo;s add another alert, click the Add Alert button on the top right. In the new dialogue, choose Alert Type as Error Ratio and set the percentage to 5%. Select the 5 functions we have.\nFinally, choose how we want to be notified. If you follow the here link below\u0026hellip;\nYou will arrive at the Integrations page where you can integrate with other vendor software you might be using already.\nFinally, click Add Alert to finish the process.\nGo back to the demo app, request a bunch of unicorns like you did earlier. You should see errors, and sure enough, a short while later you will receive an alert via the medium you configured: "
+},
+{
+	"uri": "/002_module/05_module.html",
+	"title": "Part 5: Alerting",
+	"tags": [],
+	"description": "",
+	"content": "In this module, we\u0026rsquo;ll set up alerts in Lumigo.\nSetting up alerts Go to the Alerts page, you can see that Lumigo has configured a couple of default alerts. By enabling auto-trace on our functions, they have been configured with these default alerts.\nBy default, they\u0026rsquo;re configured to send you at most one alert per an hour. You can dial this up or down (up to as frequent as to alert you on Every Event).\nClick on each of the alerts and change the Alert Frequency in the dialogue to Every Event. Don\u0026rsquo;t forget to click Save Alert when you\u0026rsquo;re done. Let\u0026rsquo;s add another alert, click the Add Alert button on the top right. In the new dialogue, choose Alert Type as Error Ratio and set the percentage to 5%. Select the 5 functions we have.\nFinally, choose how we want to be notified. If you follow the here link below\u0026hellip;\nYou will arrive at the Integrations page where you can integrate with other vendor software you might be using already.\nFinally, click Add Alert to finish the process.\nGo back to the demo app, request a bunch of unicorns like you did earlier. You should see errors, and sure enough, a short while later you will receive an alert via the medium you configured: "
+},
+{
+	"uri": "/categories.html",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags.html",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

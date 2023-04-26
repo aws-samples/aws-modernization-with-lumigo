@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Part 4: Debugging Performance Issues on Troubleshooting AWS Serverless Applications with Lumigo</title>
+    <link>/001_module/04_module.html</link>
+    <description>Recent content in Part 4: Debugging Performance Issues on Troubleshooting AWS Serverless Applications with Lumigo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language><atom:link href="/001_module/04_module/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4.1 Debugging performance issues</title>
+      <link>/001_module/04_module/10-debugging-performance-issues.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/04_module/10-debugging-performance-issues.html</guid>
+      <description>Debugging performance issues Go to the Dashboard page, and have a look at the Service Latency widget at the bottom right. This shows you the tail latency for services that you are calling from your Lambda functions. By default, this widget is sorted by the p95 (ms) column. Somewhere amongst the top, you might see similar to 4fsay0n12a.execute-api.us-east-1.amazonaws.com up there, by either p95 (ms) or p99 (ms). Click on the p99 latency value (454 in my case) This takes you to the Explore page with a prefilled query that finds the transactions where this service was involved and recorded a latency that&amp;rsquo;s equal to or greater than the latency value you clicked on.</description>
+    </item>
+    
+    <item>
+      <title>4.2 Identifying slow cold starts</title>
+      <link>/001_module/04_module/20-identifying-slow-cold-starts.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/04_module/20-identifying-slow-cold-starts.html</guid>
+      <description>Identifying slow cold starts Ah, yes, the dreaded Lambda cold starts! So often the cause of many performance concerns, especially for user-facing API functions.
+If you go to the Functions page and navigate to any of your function, you can see information about that function&amp;rsquo;s cold starts in the Metrics tab.
+When you have lots of functions, it&amp;rsquo;s not feasible to go through each function individually. In the Dashboard you can use the Functions with most Cold Starts widget to quickly identify problematic functions.</description>
+    </item>
+    
+  </channel>
+</rss>
