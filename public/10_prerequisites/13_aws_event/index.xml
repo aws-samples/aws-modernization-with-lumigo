@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Part 1: At an AWS Event... on Troubleshooting AWS Serverless Applications with Lumigo</title>
+    <link>/10_prerequisites/13_aws_event.html</link>
+    <description>Recent content in Part 1: At an AWS Event... on Troubleshooting AWS Serverless Applications with Lumigo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language><atom:link href="/10_prerequisites/13_aws_event/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

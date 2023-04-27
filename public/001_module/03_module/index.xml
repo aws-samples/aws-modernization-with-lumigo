@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Part 3: Troubleshooting on Troubleshooting AWS Serverless Applications with Lumigo</title>
+    <link>/001_module/03_module.html</link>
+    <description>Recent content in Part 3: Troubleshooting on Troubleshooting AWS Serverless Applications with Lumigo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language><atom:link href="/001_module/03_module/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3.1 Troubleshoot timeouts (synchronous functions)</title>
+      <link>/001_module/03_module/10-troubleshoot-timeouts-sync-functions.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/03_module/10-troubleshoot-timeouts-sync-functions.html</guid>
+      <description>Troubleshoot timeouts (synchronous functions) Let&amp;rsquo;s see how we can use Lumigo to troubleshoot timeouts for synchronous Lambda functions such as those handling API requests.
+If you click on the timed out issue for the requestUnicorn function, it will take you to the function details page for the function and show you the invocations that timed out. Click on one of the timed out transactions to see what happened in that transaction.</description>
+    </item>
+    
+    <item>
+      <title>3.2 Troubleshoot timeouts (asynchronous functions)</title>
+      <link>/001_module/03_module/20-troubleshoot-timeouts-async-functions.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/03_module/20-troubleshoot-timeouts-async-functions.html</guid>
+      <description>Troubleshoot timeouts (asynchronous functions) Asynchronous Lambda functions (such as those handling background tasks via SNS topics, EventBridge buses or SQS queues) are often tricky to debug because their failures are silent. These failures can go unnoticed for months or even years! The problems they cause would often manifest in unpredictable ways that makes it difficult to trace the symptoms to the original errors.
+So let&amp;rsquo;s take a moment to see how we can troubleshoot timeouts for these asynchronous Lambda functions.</description>
+    </item>
+    
+    <item>
+      <title>3.3 Troubleshoot business logic errors</title>
+      <link>/001_module/03_module/30-troubleshoot-business-logic-errors.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/03_module/30-troubleshoot-business-logic-errors.html</guid>
+      <description>Troubleshoot business logic errors Lumigo is not just great at monitoring your production application and alerting you to problems. Turns out our customers also love using it for debugging business logic errors during development because they can easily peek into the internal state of their application - every invocation event, event environment variable that was used, and the request and response for every HTTP/TCP requests their functions make to other services!</description>
+    </item>
+    
+  </channel>
+</rss>

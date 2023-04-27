@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Part 2: On your own on Troubleshooting AWS Serverless Applications with Lumigo</title>
+    <link>/10_prerequisites/14_self_paced.html</link>
+    <description>Recent content in Part 2: On your own on Troubleshooting AWS Serverless Applications with Lumigo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language><atom:link href="/10_prerequisites/14_self_paced/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lumigo Sign Up</title>
+      <link>/10_prerequisites/14_self_paced/141_lumigo_mp_trial.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/10_prerequisites/14_self_paced/141_lumigo_mp_trial.html</guid>
+      <description>Signing up for Lumigo via AWS Marketplace Visit Lumigo - Monitoring &amp;amp; Troubleshooting for Serverless Applications in AWS Marketplace You&amp;rsquo;ll land here Click the Continue to Subscribe button on the top right-hand corner. You may be prompted to sign in to the AWS account you just created, or the one you will be using for this workshop: Select Free Community in Contract Options option (which includes 150K AWS Lambda invocations traced per month), and select Yes\No for Auto Renew option on your choice.</description>
+    </item>
+    
+  </channel>
+</rss>

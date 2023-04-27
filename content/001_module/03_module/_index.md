@@ -12,4 +12,3 @@ If you go to the [Issues](https://platform.lumigo.io/issues) page and you will s
 
 ![Lumigo issues](/images/mod03-lumigo-issues-and-alerts.png)
 
-{{% children showhidden="false" %}}

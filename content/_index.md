@@ -1,10 +1,10 @@
 ---
-title: "Troubleshooting AWS Serverless Applications with Lumigo"
+title: "Troubleshooting AWS Applications with Lumigo"
 chapter: true
 weight: 1
 ---
 
-# Troubleshooting AWS Serverless Applications with Lumigo
+# Troubleshooting AWS Applications using Lumigo
 [![Lumigo](images/lumigo.png)](https://lumigo.io/)
 
 ### Welcome
@@ -42,7 +42,7 @@ In this workshop you will learn how easy it can be to debug AWS modern cloud app
     * Slow draining queues 
     * Bad health checks
 * Using [Lumigo execution tags](https://docs.lumigo.io/docs/execution-tags) to identify, search and filter requests 
-* Create AWS Cloudwatch metric alerts with Lumigo
+* Create AWS Cloudwatch metric alerts with Lumigo 
 
 {{% notice warning %}}
 <p style='text-align: left;'>

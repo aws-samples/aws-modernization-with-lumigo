@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Troubleshooting AWS Serverless Applications with Lumigo</title>
+    <link>/</link>
+    <description>Recent content on Troubleshooting AWS Serverless Applications with Lumigo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deploying the Wild Rydes Container Demo</title>
+      <link>/002_module/01_module/01-deploy-wild-rydes-container-demo.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/002_module/01_module/01-deploy-wild-rydes-container-demo.html</guid>
+      <description>Clone the demo app repo As a first step, we&amp;rsquo;ll deploy the demo app to your AWS account and then see how we can debug different problems with Lumigo.
+RECOMMENDATION: you shouldn&amp;rsquo;t deploy this to your production AWS account. Use your personal account, or a playground account.
+First, clone this repo locally: git clone git@github.com:lumigo-io/troubleshooting-serverless-workshop-demo Go to the project folder cd troubleshooting-serverless-workshop-demo/ and run npm ci to restore all project dependencies.</description>
+    </item>
+    
+    <item>
+      <title>Deploying the Wild Rydes Demo Application</title>
+      <link>/001_module/01_module/01-deploy-wild-rydes-demo.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/01_module/01-deploy-wild-rydes-demo.html</guid>
+      <description>Clone the demo app repo As a first step, we&amp;rsquo;ll deploy the demo app to your AWS account and then see how we can debug different problems with Lumigo.
+RECOMMENDATION: you shouldn&amp;rsquo;t deploy this to your production AWS account. Use your personal account, or a playground account.
+First, clone this repo locally: git clone git@github.com:lumigo-io/troubleshooting-serverless-workshop-demo Go to the project folder cd troubleshooting-serverless-workshop-demo/ and run npm ci to restore all project dependencies.</description>
+    </item>
+    
+    <item>
+      <title>Lumigo Sign Up</title>
+      <link>/10_prerequisites/14_self_paced/141_lumigo_mp_trial.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/10_prerequisites/14_self_paced/141_lumigo_mp_trial.html</guid>
+      <description>Signing up for Lumigo via AWS Marketplace Visit Lumigo - Monitoring &amp;amp; Troubleshooting for Serverless Applications in AWS Marketplace You&amp;rsquo;ll land here Click the Continue to Subscribe button on the top right-hand corner. You may be prompted to sign in to the AWS account you just created, or the one you will be using for this workshop: Select Free Community in Contract Options option (which includes 150K AWS Lambda invocations traced per month), and select Yes\No for Auto Renew option on your choice.</description>
+    </item>
+    
+    <item>
+      <title>Create a new Cloud9 IDE environment</title>
+      <link>/10_prerequisites/15_workspace_setup/150_cloud9.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/10_prerequisites/15_workspace_setup/150_cloud9.html</guid>
+      <description>1 . Within the AWS console, use the region drop list to select us-east-1 (N. Virginia). This will ensure the workshop script provisions the resources in this same region
+2 . Navigate to the cloud9 console or just search for it under the AWS console services menu
+3 . Click the Create environment button
+4 . For the name use lumigo-workshop, then click Next step
+5 . Select the default instance type t3.</description>
+    </item>
+    
+    <item>
+      <title>Create an IAM role for your workspace</title>
+      <link>/10_prerequisites/15_workspace_setup/151_iamrole.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/10_prerequisites/15_workspace_setup/151_iamrole.html</guid>
+      <description>Starting from here, when you see command to be entered such as below, you will enter these commands into Cloud9 IDE. You can use the Copy to clipboard feature (right hand upper corner) to simply copy and paste into Cloud9. In order to paste, you can use Ctrl + V for Windows or Command + V for Mac.
+Follow this deep link to create an IAM role with Administrator access.</description>
+    </item>
+    
+    <item>
+      <title>Attach the IAM role to your Workspace</title>
+      <link>/10_prerequisites/15_workspace_setup/152_workspaceiam.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/10_prerequisites/15_workspace_setup/152_workspaceiam.html</guid>
+      <description>Follow this deep link to find your Cloud9 EC2 instance
+Select the instance, then choose Actions / Security / Modify IAM role
+Choose Lumigo-Workshop-Admin from the IAM Role, and select Save</description>
+    </item>
+    
+    <item>
+      <title>Configure workspace for Lumigo Workshop</title>
+      <link>/10_prerequisites/15_workspace_setup/153_cloud.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/10_prerequisites/15_workspace_setup/153_cloud.html</guid>
+      <description>Return to your workspace and click the gear icon (in top right corner), or click to open a new tab and choose &amp;ldquo;Open Preferences&amp;rdquo;
+Select AWS SETTINGS and turn off AWS managed temporary credentials Close the Preferences tab
+Copy and run (paste with Ctrl+P) the commands below into the terminal window. Click Enter to execute last command. You should see &amp;ldquo;IAM role valid&amp;rdquo; message if everything ran correctly. Before running it, you can review what it does by reading through the comments.</description>
+    </item>
+    
+    <item>
+      <title>3.1 Troubleshoot timeouts (synchronous functions)</title>
+      <link>/001_module/03_module/10-troubleshoot-timeouts-sync-functions.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/03_module/10-troubleshoot-timeouts-sync-functions.html</guid>
+      <description>Troubleshoot timeouts (synchronous functions) Let&amp;rsquo;s see how we can use Lumigo to troubleshoot timeouts for synchronous Lambda functions such as those handling API requests.
+If you click on the timed out issue for the requestUnicorn function, it will take you to the function details page for the function and show you the invocations that timed out. Click on one of the timed out transactions to see what happened in that transaction.</description>
+    </item>
+    
+    <item>
+      <title>3.1 Troubleshoot timeouts (synchronous functions)</title>
+      <link>/002_module/03_module/10-troubleshoot-timeouts-sync-functions.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/002_module/03_module/10-troubleshoot-timeouts-sync-functions.html</guid>
+      <description>Troubleshoot timeouts (synchronous functions) Let&amp;rsquo;s see how we can use Lumigo to troubleshoot timeouts for synchronous Lambda functions such as those handling API requests.
+If you click on the timed out issue for the requestUnicorn function, it will take you to the function details page for the function and show you the invocations that timed out. Click on one of the timed out transactions to see what happened in that transaction.</description>
+    </item>
+    
+    <item>
+      <title>3.2 Troubleshoot timeouts (asynchronous functions)</title>
+      <link>/001_module/03_module/20-troubleshoot-timeouts-async-functions.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/03_module/20-troubleshoot-timeouts-async-functions.html</guid>
+      <description>Troubleshoot timeouts (asynchronous functions) Asynchronous Lambda functions (such as those handling background tasks via SNS topics, EventBridge buses or SQS queues) are often tricky to debug because their failures are silent. These failures can go unnoticed for months or even years! The problems they cause would often manifest in unpredictable ways that makes it difficult to trace the symptoms to the original errors.
+So let&amp;rsquo;s take a moment to see how we can troubleshoot timeouts for these asynchronous Lambda functions.</description>
+    </item>
+    
+    <item>
+      <title>3.2 Troubleshoot timeouts (asynchronous functions)</title>
+      <link>/002_module/03_module/20-troubleshoot-timeouts-async-functions.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/002_module/03_module/20-troubleshoot-timeouts-async-functions.html</guid>
+      <description>Troubleshoot timeouts (asynchronous functions) Asynchronous Lambda functions (such as those handling background tasks via SNS topics, EventBridge buses or SQS queues) are often tricky to debug because their failures are silent. These failures can go unnoticed for months or even years! The problems they cause would often manifest in unpredictable ways that makes it difficult to trace the symptoms to the original errors.
+So let&amp;rsquo;s take a moment to see how we can troubleshoot timeouts for these asynchronous Lambda functions.</description>
+    </item>
+    
+    <item>
+      <title>3.3 Troubleshoot business logic errors</title>
+      <link>/001_module/03_module/30-troubleshoot-business-logic-errors.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/03_module/30-troubleshoot-business-logic-errors.html</guid>
+      <description>Troubleshoot business logic errors Lumigo is not just great at monitoring your production application and alerting you to problems. Turns out our customers also love using it for debugging business logic errors during development because they can easily peek into the internal state of their application - every invocation event, event environment variable that was used, and the request and response for every HTTP/TCP requests their functions make to other services!</description>
+    </item>
+    
+    <item>
+      <title>3.3 Troubleshoot business logic errors</title>
+      <link>/002_module/03_module/30-troubleshoot-business-logic-errors.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/002_module/03_module/30-troubleshoot-business-logic-errors.html</guid>
+      <description>Troubleshoot business logic errors Lumigo is not just great at monitoring your production application and alerting you to problems. Turns out our customers also love using it for debugging business logic errors during development because they can easily peek into the internal state of their application - every invocation event, event environment variable that was used, and the request and response for every HTTP/TCP requests their functions make to other services!</description>
+    </item>
+    
+    <item>
+      <title>4.1 Debugging performance issues</title>
+      <link>/001_module/04_module/10-debugging-performance-issues.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/04_module/10-debugging-performance-issues.html</guid>
+      <description>Debugging performance issues Go to the Dashboard page, and have a look at the Service Latency widget at the bottom right. This shows you the tail latency for services that you are calling from your Lambda functions. By default, this widget is sorted by the p95 (ms) column. Somewhere amongst the top, you might see similar to 4fsay0n12a.execute-api.us-east-1.amazonaws.com up there, by either p95 (ms) or p99 (ms). Click on the p99 latency value (454 in my case) This takes you to the Explore page with a prefilled query that finds the transactions where this service was involved and recorded a latency that&amp;rsquo;s equal to or greater than the latency value you clicked on.</description>
+    </item>
+    
+    <item>
+      <title>4.1 Debugging performance issues</title>
+      <link>/002_module/04_module/10-debugging-performance-issues.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/002_module/04_module/10-debugging-performance-issues.html</guid>
+      <description>Debugging performance issues Go to the Dashboard page, and have a look at the Service Latency widget at the bottom right. This shows you the tail latency for services that you are calling from your Lambda functions. By default, this widget is sorted by the p95 (ms) column. Somewhere amongst the top, you might see similar to 4fsay0n12a.execute-api.us-east-1.amazonaws.com up there, by either p95 (ms) or p99 (ms). Click on the p99 latency value (454 in my case) This takes you to the Explore page with a prefilled query that finds the transactions where this service was involved and recorded a latency that&amp;rsquo;s equal to or greater than the latency value you clicked on.</description>
+    </item>
+    
+    <item>
+      <title>4.2 Identifying slow cold starts</title>
+      <link>/001_module/04_module/20-identifying-slow-cold-starts.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/001_module/04_module/20-identifying-slow-cold-starts.html</guid>
+      <description>Identifying slow cold starts Ah, yes, the dreaded Lambda cold starts! So often the cause of many performance concerns, especially for user-facing API functions.
+If you go to the Functions page and navigate to any of your function, you can see information about that function&amp;rsquo;s cold starts in the Metrics tab.
+When you have lots of functions, it&amp;rsquo;s not feasible to go through each function individually. In the Dashboard you can use the Functions with most Cold Starts widget to quickly identify problematic functions.</description>
+    </item>
+    
+    <item>
+      <title>4.2 Identifying slow cold starts</title>
+      <link>/002_module/04_module/20-identifying-slow-cold-starts.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/002_module/04_module/20-identifying-slow-cold-starts.html</guid>
+      <description>Identifying slow cold starts Ah, yes, the dreaded Lambda cold starts! So often the cause of many performance concerns, especially for user-facing API functions.
+If you go to the Functions page and navigate to any of your function, you can see information about that function&amp;rsquo;s cold starts in the Metrics tab.
+When you have lots of functions, it&amp;rsquo;s not feasible to go through each function individually. In the Dashboard you can use the Functions with most Cold Starts widget to quickly identify problematic functions.</description>
+    </item>
+    
+  </channel>
+</rss>
