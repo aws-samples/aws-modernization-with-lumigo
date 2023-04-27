@@ -30,7 +30,7 @@ That should then return a message like this:
 
 You can check the status of the deployment by running the following to check the `StackStatus`
 ```
-aws cloudformation describe-stacks --stack-name WildRydesDemo
+aws cloudformation describe-stacks --stack-name WildRydesDemo --query "Stacks[].StackStatus[]" --output text
 ```
 
 Once finished we then need the public ip address from the ECS task, run this to get the public IP so we can check out app:  
