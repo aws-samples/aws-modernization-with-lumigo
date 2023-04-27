@@ -12,4 +12,7 @@ New approaches to troubleshooting, tailor-made for microservices, can help devel
 
 ## What we will cover in this module
 
-Coming soon!
+- Microservices and challenges of distributed application and tracing
+- What is Lumigo and how to use Lumigo to trace transactions for containerized services
+- How distributed tracing works in Lumigo
+- What are different types of issues and how to quickly navigate to the root cause

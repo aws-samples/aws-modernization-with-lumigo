@@ -4,13 +4,21 @@ chapter: false
 weight: 110
 ---
 
-## Deploy the demo app using CLI
-
 As a first step, we'll deploy the demo app to your AWS account and then see how we can debug different problems with Lumigo.
 
 {{% notice info %}}
 **RECOMMENDATION**: you shouldn't deploy this to your production AWS account. Use your personal account, or a playground account.
 {{% /notice %}}
+
+### Deploy the demo app using AWS Management Console
+
+- First we will need the [Lumigo Tracer Token](https://docs.lumigo.io/docs/lumigo-tokens). Login into your [Lumigo account](https://platform.lumigo.io/), navigate to **Settings -> Tracing**, and copy the token from *Manual tracing* section. 
+- Login into your AWS Account and use [this CloudFormation link](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://lumigoworkshop.s3.amazonaws.com/WildrydesECS.yaml&stackName=WildRydesDemo&param_LumigoToken=YOUR_LUMIGO_TRACER_TOKEN) to create the stack. Update **LumigoToken** parameter with your value
+- Navigate to [ECS Cluster created](https://us-east-1.console.aws.amazon.com/ecs/v2/clusters/UniECSCluster/services?region=us-east-1), got to **Tasks** and click on the running task
+- In **Configuration** section click ``open address`` next to Public IP value
+
+
+### Deploy the demo app using CLI
 
 For this method your AWS CLI will need to be authenticated with the required permissions and accesses to deploy the demo application. 
 
@@ -43,27 +51,4 @@ Enter the returned IP address into a browser and you should see the screen below
 
 ![](/images/mod01-002.png)
 
-Congratulations, you have successfully deployed the ECS WildRydes app 🎉🎉
-
-## Register and sign in
-
-Now lets take that newly deployed ECS Demo app for a spin by clicking on the `Giddy Up!` button on the home page. 
-
-* Then register a new account.
-
-![](/images/mod22-001.png)
-
-* And then sign in using the same username and password used during registration 
-
-![](/images/mod22-002.png)
-
-* Wait a moment for the map to load, then click anywhere on the map to put down a marker. This is where you'll hail for a ryde.
-
-![](/images/mod22-003.png)
-
-So, looks like there are a few problems in this app, let's find them!
-
-
-
-
-
+Congratulations, you have successfully deployed the ECS Wild Rydes app 🎉🎉
